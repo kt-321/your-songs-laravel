@@ -9,8 +9,8 @@
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
-                <li class="nav-item"><a href="#" class="nav-link">新規登録</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">ログイン</a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-sign-in-alt mr-1"></i>ログイン</a></li>
+                <li class="nav-item"><a href="{{ route("signup.get") }}" class="nav-link"><i class="fas fa-user-plus mr-1"></i>新規登録</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">About</a></li>
             </ul>
         </div>
