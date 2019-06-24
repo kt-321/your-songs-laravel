@@ -51,11 +51,6 @@ class RegisterController extends Controller
             "name" => "required|string|max:15",
             "email" => "required|string|email|max:30|unique:users",
             "password" => "required|string|min:6|confirmed",
-            "age" => "required|integer",
-            "gender" => "required|string",
-            "favorite_music_age" => "nullable|integer",
-            "favorite_artist" => "nullable|string|max:20",
-            "comment" => "nullable|string|max:200"
         ]);
     }
 
@@ -71,11 +66,6 @@ class RegisterController extends Controller
             "name" => $data["name"],
             "email" => $data["email"],
             "password" => bcrypt($data["password"]),
-            "age" => $data["age"],
-            "gender" => $data["gender"],
-            "favorite_music_age" => $data["favorite_music_age"],
-            "favorite_artist" => $data["favorite_artist"],
-            "comment" => $data["comment"],
         ]);
     }
 }
