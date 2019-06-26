@@ -19,7 +19,7 @@
                     {!! Form::password("password", ["class" => "form-control"]) !!}
                 </div>
                 
-                {!! Form::submit('ログイン', ['class' => 'btn btn-primary btn-block']) !!}
+                {!! Form::submit("ログイン", ["class" => "btn btn-primary btn-block"]) !!}
             {!! Form::close() !!}
             
             <p class="mt-2">未登録の方は <a href="{{ route("signup.get") }}">こちら</a>から新規登録できます。</p>
