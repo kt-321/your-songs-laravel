@@ -11,7 +11,7 @@
             <ul class="navbar-nav">
                 <!--ログイン中のナビゲーションバー-->
                 @if (Auth::check())
-                    <li class="nav-item"><a href="#" class="nav-link">Users</a></li>
+                    <li class="nav-item"><a href="{{ url("/users") }}" class="nav-link"><i class="fas fa-user mr-1"></i>ユーザー</a></li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                         <ul class="dropdown-menu dropdown-menu-right bg-dark border-white">
