@@ -15,7 +15,7 @@
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                         <ul class="dropdown-menu dropdown-menu-right bg-dark border-white">
-                            <li class="dropdown-item"><a href="#" class="text-white"><i class="fas fa-user-circle mr-1" style="color: white;"></i>マイページ</a></li>
+                            <li class="dropdown-item"><a href="{{ route("users.show", ["id" => Auth::id()]) }}" class="text-white"><i class="fas fa-user-circle mr-1" style="color: white;"></i>マイページ</a></li>
                             <li class="dropdown-divider"></li>
                             <li class="dropdown-item"><a href="{{ route("logout.get") }}" class="text-white"><i class="fas fa-sign-out-alt mr-1" style="color: white;"></i>ログアウト</a></li>
                         </ul>

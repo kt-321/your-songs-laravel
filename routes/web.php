@@ -33,4 +33,7 @@ Route::group(["middleware" => "auth"], function(){
     
     // ログアウト
     Route::get("logout", "Auth\LoginController@logout")->name("logout.get");
+    
+    // ユーザー一覧・ユーザープロフィール詳細・マイプロフィール編集・マイプロフィール更新
+    Route::resource("users", "UsersController", ["only" => ["index", "show", "edit", "update"]]);
 });
