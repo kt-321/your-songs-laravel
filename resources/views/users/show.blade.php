@@ -58,6 +58,13 @@
                 </ul>
             </div>
             @endif  
+            
+            <!--自分のアカウントである場合に限り、プロフィール編集ボタンを表示-->
+            @if(Auth::id() == $user->id)
+            <div class="status edit my-1">
+                <a href="{{ route("users.edit", ["id" => $user->id]) }}" class="btn btn-primary btn-modify-profile">プロフィールを編集</a>
+            </div>
+            @endif
         </div>
     </div>     
 @endsection
