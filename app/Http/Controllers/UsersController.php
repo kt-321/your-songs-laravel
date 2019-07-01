@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateUserRequest;
+
 
 use App\User;
 
@@ -33,18 +35,8 @@ class UsersController extends Controller
         return view("users.edit", ["user" => $user]);
     }
     
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {   
-        $request->validate([
-            "name" => "required|string|max:15",
-            "email" => "required|string|email|max:30|unique:users,email,$id",
-            "age" => "nullable|integer",
-            "gender" => "nullable|string",
-            "favorite_music_age" => "nullable|integer",
-            "favorite_artist" => "nullable|string|max:20",
-            "comment" => "nullable|string|max:150"
-        ]);
-        
         $user = User::find($id);
         
         $user->name = $request->name;
