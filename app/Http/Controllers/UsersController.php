@@ -5,40 +5,32 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateUserRequest;
 
-
 use App\User;
 
 class UsersController extends Controller
 {
     public function index()
-    {
+    {   
         $users = User::orderBy("id", "desc")->paginate(10);
         
-        return view("users.index", [
-            "users" => $users,    
-        ]);
+        return view("users.index", ["users" => $users]);
     }
     
-    public function show($id)
+    
+    public function show(User $user)
     {
-        $user = User::find($id);
-        
-        return view("users.show", [
-            "user" => $user,
-        ]);
+        return view("users.show", ["user" => $user]);
     }
     
-    public function edit($id)
+    
+    public function edit(User $user)
     {
-        $user = User::find($id);
-        
         return view("users.edit", ["user" => $user]);
     }
     
-    public function update(UpdateUserRequest $request, $id)
+    
+    public function update(UpdateUserRequest $request, User $user)
     {   
-        $user = User::find($id);
-        
         $user->name = $request->name;
         $user->email = $request->email;
         $user->age = $request->age;
@@ -49,6 +41,6 @@ class UsersController extends Controller
         
         $user->save();
         
-        return redirect()->route("users.show", ["id" => $user->id]);
+        return redirect("users/".$user->id);
     }
 }
