@@ -37,4 +37,17 @@ class UpdateUserRequest extends FormRequest
             "comment" => "nullable|string|max:150"
         ];
     }
+    
+    public function attributes()
+    {
+        return [
+            "name" => "名前",
+            "email" => "メールアドレス",
+            "age" => "年齢",
+            "gender" => "性別",
+            "favorite_music_age" => "好きな音楽の年代",
+            "favorite_artist" => "好きなミュージシャン",
+            "comment" => "自己紹介"
+        ];
+    }
 }
