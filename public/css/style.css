@@ -4,3 +4,51 @@ footer {
     color: #fff;
     height: 3vh;
 }
+
+/*ページネーション*/
+.pagination{
+    justify-content: center;
+}
+
+h3.song-title{
+    padding: 0.5em;/*文字周りの余白*/
+    color: #494949;/*文字色*/
+    background: #fffaf4;/*背景色*/
+    border-left: solid 5px #ffaf58;/*左線（実線 太さ 色）*/
+}
+
+h4.user-info{
+    padding: 0.25em 0.5em;/*上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: transparent;/*背景透明に*/
+    border-left: solid 5px #7db4e6;/*左線*/
+}
+
+.song-video{
+    width: 220px; 
+    height: 150px;
+}
+
+ /*　画面サイズが480pxから768pxのとき　*/
+@media screen and (min-width:480px) { 
+.song-video{
+    width: 400px; 
+    height: 250px;
+}
+}
+    
+/*　画面サイズが768pxから1024pxのとき　*/
+@media screen and (min-width:768px) and ( max-width:1024px) {
+.song-video{
+    width: 450px; 
+    height: 300px;
+}
+}
+    
+/*　画面サイズが1024px以上のとき　*/
+@media screen and (min-width:1024px) {
+.song-video{
+    width: 550px; 
+    height: 350px;
+}
+}

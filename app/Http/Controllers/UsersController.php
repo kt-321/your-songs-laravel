@@ -19,7 +19,16 @@ class UsersController extends Controller
     
     public function show(User $user)
     {
-        return view("users.show", ["user" => $user]);
+        $songs = $user->songs()->orderBy("created_at", "desc")->paginate(10);
+        
+        $data = [
+            "user" => $user,
+            "songs" => $songs,
+        ];
+        
+        $data += $this->counts($user);
+        
+        return view("users.show", $data);
     }
     
     

@@ -42,7 +42,7 @@
                 
                 @if($user->favorite_artist)
                 <li style="border-left: solid 1px #333; padding: 0 10px; display: table-cell;">
-                    <div class="status-label">お気に入り</div>
+                    <div class="status-label">好きなアーティスト</div>
                     <div class="status-value">{{ $user->favorite_artist}}</div>
                 </li>
                 @endif
@@ -67,4 +67,11 @@
             @endif
         </div>
     </div>     
+    
+    <div>
+        @include("users.navtabs", ["user" => $user])
+        @if (count($songs) > 0)
+            @include("songs.songs", ["songs" => $songs])
+        @endif 
+    </div>
 @endsection

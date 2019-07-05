@@ -1,6 +1,10 @@
 <header class="mb-4">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        @if (Auth::check())
         <a class="navbar-brand" href="/home">YourSongs</a>
+        @else
+        <a class="navbar-brand" href="/">YourSongs</a>
+        @endif
         
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
             <span class="navbar-toggler-icon"></span>
@@ -11,7 +15,9 @@
             <ul class="navbar-nav">
                 <!--ログイン中のナビゲーションバー-->
                 @if (Auth::check())
-                    <li class="nav-item"><a href="{{ url("/users") }}" class="nav-link"><i class="fas fa-user mr-1"></i>ユーザー</a></li>
+                    <li class="nav-item"><a href="{{ url("songs") }}" class="nav-link"><i class="far fa-lightbulb mr-1"></i>新しく投稿された曲</a></li>
+                    <li class="nav-item"><a href="{{ url("users") }}" class="nav-link"><i class="fas fa-user mr-1"></i>ユーザー</a></li>
+                    <li class="nav-item"><a href="{{ url("songs/create") }}" class="nav-link"><i class="fas fa-plus mr-1"></i>曲を追加</a></li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                         <ul class="dropdown-menu dropdown-menu-right bg-dark border-white">

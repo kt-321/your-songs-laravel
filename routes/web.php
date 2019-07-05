@@ -36,4 +36,7 @@ Route::group(["middleware" => "auth"], function(){
     
     // ユーザー一覧・ユーザープロフィール詳細・マイプロフィール編集・マイプロフィール更新
     Route::resource("users", "UsersController", ["only" => ["index", "show", "edit", "update"]]);
+    
+    // 曲の一覧表示・登録画面表示・登録処理・取得表示・更新画面表示・更新処理・削除処理
+    Route::resource("songs", "SongsController");
 });
