@@ -38,7 +38,7 @@
             
             <!--投稿者が自分でないときに限り投稿者情報を表示-->
             <div class="contributor-introduction ml-2">
-                @if(Auth::id() == $song->user_id)
+                @if(Auth::id() === $song->user_id)
                 <span class="badge badge-success ml-1">自分の投稿</span>
                 @else
                 <h4 class="contributor-introduction-label">投稿者情報</h4>
@@ -86,7 +86,7 @@
             </div>
             
             <div class="contributor-button ml-4 pr-2">
-                @if(Auth::id() == $song->user_id)
+                @if(Auth::id() === $song->user_id)
                     <a href="{{ route("songs.edit", ["id" => $song->id]) }}" class="btn btn-light mr-3 px-2 py-1">編集</a>
                 
                     {!! Form::open(["route" => ["songs.destroy", "$song->id"], "method" => "delete" ]) !!}

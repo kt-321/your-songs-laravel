@@ -1,7 +1,7 @@
 @extends("layouts.app")
 
 @section("content")
-    @if(Auth::id() == $user->id)
+    @if(Auth::id() === $user->id)
     <h1 class="mb-4 text-center"><i class="fas fa-user-circle mr-1"></i>マイページ</h1>
     @else
     <h1 class="mb-4 text-center"><i class="fas fa-user-circle mr-1"></i>{{ $user->name }}</h1>
@@ -65,7 +65,7 @@
             @endif  
             
             <!--自分のアカウントである場合に限り、プロフィール編集ボタンを表示-->
-            @if(Auth::id() == $user->id)
+            @if(Auth::id() === $user->id)
             <div class="status edit my-1">
                 <a href="{{ route("users.edit", ["id" => $user->id]) }}" class="btn btn-primary btn-modify-profile">プロフィールを編集</a>
             </div>
