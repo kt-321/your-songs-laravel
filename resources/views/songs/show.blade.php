@@ -3,60 +3,62 @@
 @section("content")
     <!--曲情報-->
     <section class="song-introduction mb-5">
-        <h3 class="song-title text-center mb-3" style="word-wrap: break-word;"><i class="fas fa-music mr-3"></i>{{ $song->title }}</h3>
+        <h3 class="song-title text-center mb-3"><i class="fas fa-music mr-3"></i>{{ $song->title }}</h3>
         <div class="song-details mb-3">
             <ul class="list-unstyled px-3">
-                <li class="mb-2" style="word-wrap: break-word;"><i class="fas fa-guitar mr-1"></i>アーティスト：{!! nl2br(e($song->artist_name)) !!}</li>
-                <li class="mb-2" style="word-wrap: break-word;"><i class="fas fa-history mr-1"></i>曲の年代：{!! nl2br(e($song->music_age)) !!}年代</li>
-                <li class="mb-2" style="word-wrap: break-word;">
-                    <div class="mb-1">
-                        <i class="far fa-comment-dots mr-1"></i>説明
-                    </div>
+                <li class="song-item mb-2"><i class="fas fa-guitar mr-1"></i>アーティスト：{!! nl2br(e($song->artist_name)) !!}</li>
+                <li class="song-item mb-2"><i class="fas fa-history mr-1"></i>曲の年代：{!! nl2br(e($song->music_age)) !!}年代</li>
+                <li class="song-item mb-2">
+                    @if($song->description)
+                        <div class="song-description-label">
+                            <i class="far fa-comment-dots mr-1"></i>説明
+                        </div>
                     
-                    <div class="status-value balloon4 mx-auto my-auto">
-                        <p style="word-wrap: break-word;">{!! nl2br(e($song->description)) !!}</p>
-                    </div>
+                        <div class="song-description-value">
+                            <p class="text-area">{!! nl2br(e($song->description)) !!}</p>
+                        </div>
+                    @endif
                 </li>
                 
                 @if($song->video_url)
-                <li class="mb-0 text-center" style="word-wrap: break-word;">
+                <li class="song-item mb-1 text-center">
                     <div class="text-left mb-1"><i class="fab fa-youtube mr-1"></i>映像</div>
                     <iframe class="song-video" src="https://www.youtube.com/embed/{{ $song->video_url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>           
                 </li>
                 @else
-                <li class="mb-0"><i class="fab fa-youtube mr-1"></i>映像はありません。</li>
+                <li class="song-item mb-0"><i class="fab fa-youtube mr-1"></i>映像はありません。</li>
                 @endif
             </ul>
             
              <!--投稿者が自分でないときに限り投稿者情報を表示-->
-            <div class="about-user ml-2">
+            <div class="contributor-introduction ml-2">
                 @if(Auth::id() == $song->user_id)
                 <span class="badge badge-success ml-1">自分の投稿</span>
                 
                 @else
-                <h4 class="user-info">投稿者情報</h4>
+                <h4 class="contributor-introduction-label">投稿者情報</h4>
                 <div class="user-details">
                     <ul class="list-unstyled px-3">
-                        <li><a href="{{ route("users.show", ["id" => $song->user->id]) }}">{!! nl2br(e($song->user->name)) !!}</a></li>
+                        <li class="user-item mb-1"><a href="{{ route("users.show", ["id" => $song->user->id]) }}">{!! nl2br(e($song->user->name)) !!}</a></li>
                         
                         @if($song->user->age)
-                        <li class="mb-0">{!! nl2br(e($song->user->age)) !!}代</li>
+                        <li class="user-item mb-1">{!! nl2br(e($song->user->age)) !!}代</li>
                         @else
-                        <li class="mb-0"></li>
+                        <li class="user-item mb-1"></li>
                         @endif
                         
                         @if($song->user->gender == 1)
-                        <li class="mb-1" style="word-wrap: break-word;">男性</li>
+                        <li class="user-item mb-1">男性</li>
                         @elseif($song->user->gender == 2)
-                        <li class="mb-1" style="word-wrap: break-word;">女性</li>
+                        <li class="user-item mb-1">女性</li>
                         @endif
                         
                         @if($song->user->favorite_music_age)
-                        <li class="mb-1" style="word-wrap: break-word;">{!! nl2br(e($song->user->favorite_music_age)) !!}年代の音楽</li>
+                        <li class="user-item mb-1">{!! nl2br(e($song->user->favorite_music_age)) !!}年代の音楽</li>
                         @endif
                         
                         @if($song->user->favorite_artist)
-                        <li class="mb-1" style="word-wrap: break-word;">好きなミュージシャン：{!! nl2br(e($song->user->favorite_artist)) !!}</li>
+                        <li class="user-item mb-1">好きなミュージシャン：{!! nl2br(e($song->user->favorite_artist)) !!}</li>
                         @endif
                     </ul>
                     
@@ -65,21 +67,21 @@
                 @endif
             </div>
             
-            <div style="width:180px; margin-left:auto;">
+            <div class="song-time ml-auto mb-1">
                 <ul class="list-unstyled">
-                    <li>
-                        <span class="text-muted" style="font-size:13px">  投稿  {{ $song->created_at }}</span>
+                    <li class="mr-3">
+                        <span class="post-time text-muted">  投稿  {{ $song->created_at }}</span>
                     </li>
-                    <li>
+                    <li class="mr-3">
                         @if($song->updated_at)
-                        <span class="text-muted" style="font-size:13px">  更新  {{ $song->updated_at }}</span>
+                        <span class="update-time text-muted">  更新  {{ $song->updated_at }}</span>
                         @endif
                     </li>
                 </ul> 
             </div>
         </div>
         
-        <div class="ml-4 pr-2" style="display: flex; justify-content: flex-end;">
+        <div class="contributor-button ml-4 pr-2">
                 @if(Auth::id() == $song->user_id)
                     <a href="{{ route("songs.edit", ["id" => $song->id]) }}" class="btn btn-light mr-3 px-2 py-1">編集</a>
                 

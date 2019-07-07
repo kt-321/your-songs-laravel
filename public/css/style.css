@@ -17,7 +17,8 @@ h3.song-title{
     border-left: solid 5px #ffaf58;/*左線（実線 太さ 色）*/
 }
 
-h4.user-info{
+h4.contributor-introduction-label{
+    font-size: 18px;
     padding: 0.25em 0.5em;/*上下 左右の余白*/
     color: #494949;/*文字色*/
     background: transparent;/*背景透明に*/
@@ -29,11 +30,72 @@ h4.user-info{
     height: 150px;
 }
 
+.song-title{
+    word-wrap: break-word;
+}
+
+.song-item{
+    word-wrap: break-word;
+}
+
+.text-area{
+    word-wrap: break-word;
+}
+
+.user-item{
+    word-wrap: break-word;
+    font-size: 14px;
+}
+
+.song-time{
+    width: 180px;
+}
+
+.post-time{
+    font-size: 13px;
+}
+
+.update-time{
+    font-size: 13px;
+}
+
+.contributor-button{
+    display: flex; 
+    justify-content: flex-end;
+}
+
+.status-list{
+    display: table;
+    list-style: none;
+}
+
+.status-item-left{
+    display: table-cell;
+    padding: 0 10px;
+}
+
+.status-item{
+    display: table-cell;
+    border-left: solid 1px #333;
+    padding: 0 10px;
+}
+
+.self-introduction{
+    min-width: 150px;
+    max-width: 300px;
+}
+
+
  /*　画面サイズが480pxから768pxのとき　*/
 @media screen and (min-width:480px) { 
 .song-video{
     width: 400px; 
     height: 250px;
+}
+
+.self-introduction{
+    min-width: 150px;
+    max-width: 400px;
 }
 }
     
@@ -43,6 +105,11 @@ h4.user-info{
     width: 450px; 
     height: 300px;
 }
+
+.self-introduction{
+    min-width: 150px;
+    max-width: 500px;
+}
 }
     
 /*　画面サイズが1024px以上のとき　*/
@@ -50,5 +117,10 @@ h4.user-info{
 .song-video{
     width: 550px; 
     height: 350px;
+}
+
+.self-introduction{
+    min-width: 150px;
+    max-width: 600px;
 }
 }
