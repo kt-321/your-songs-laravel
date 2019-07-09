@@ -39,4 +39,11 @@ Route::group(["middleware" => "auth"], function(){
     
     // 曲の一覧表示・登録画面表示・登録処理・取得表示・更新画面表示・更新処理・削除処理
     Route::resource("songs", "SongsController");
+    
+    Route::group(["prefix" => "users/{id}"], function(){
+        Route::post("follow", "UserFollowController@store")->name("user.follow");
+        Route::delete("unfollow", "UserFollowController@destroy")->name("user.unfollow");
+        Route::get("followings", "UsersController@followings")->name("users.followings");
+        Route::get("followers", "UsersController@followers")->name("users.followers");
+    });
 });

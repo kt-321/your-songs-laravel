@@ -4,7 +4,7 @@
     @else
     <li class="nav-item"><a href="{{ route("users.show", ["id" => $user->id]) }}" class="nav-link {{ Request::is("users/" . $user->id) ? "active" : ""}}">おすすめ曲<span class="badge badge-secondary ml-1">{{ $count_songs }}</span></a></li>
     @endif
-    <li class="nav-item"><a href="#"><i class="fas fa-user"></i>フォロー中</a></li>
-    <li class="nav-item"><a href="#"><i class="fas fa-user"></i>フォロワー</a></li>
+    <li class="nav-item"><a href="{{ route("users.followings", ["id" => $user->id]) }}" class="nav-link {{ Request::is("users/*/followings") ? "active" : ""}}"><i class="fas fa-user"></i>フォロー中<span class="badge badge-secondary ml-1">{{ $count_followings }}</span></a></li>
+    <li class="nav-item"><a href="{{ route("users.followers", ["id" => $user->id]) }}" class="nav-link {{ Request::is("users/*/followers") ? "active" : ""}}"><i class="fas fa-user"></i>フォロワー<span class="badge badge-secondary ml-1">{{ $count_followers }}</span></a></li>
     <li class="nav-item"><a href="#"><i class="fas fa-star mr-2"></i>お気に入り</a></li>
 </ul>

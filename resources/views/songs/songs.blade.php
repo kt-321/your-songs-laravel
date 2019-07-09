@@ -67,6 +67,10 @@
                         @endif
                     </ul>
                     
+                    <div class="d-inline-block">
+                        @include("user_follow.follow_button", ["user" => $song->user])
+                    </div>
+                    
                     <a class="btn btn-success btn-sm" href="{{ route("users.show", ["id" => $song->user->id]) }}">プロフィール</a>
                 </div>
                 @endif

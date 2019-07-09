@@ -80,6 +80,11 @@ h4.contributor-introduction-label{
     padding: 0 10px;
 }
 
+.status-item-introduction{
+    display: table-cell;
+    padding: 0 8px;
+}
+
 .self-introduction{
     min-width: 150px;
     max-width: 300px;
