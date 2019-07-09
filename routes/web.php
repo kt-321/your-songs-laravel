@@ -29,7 +29,7 @@ Route::group(["middleware" => "guest"], function(){
 // ログイン時
 Route::group(["middleware" => "auth"], function(){
     // ログイン時のトップページ
-    Route::get("/home", "HomeController@index")->name("home");
+    Route::get("/home", "SongsController@index")->name("home");
     
     // ログアウト
     Route::get("logout", "Auth\LoginController@logout")->name("logout.get");

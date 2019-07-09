@@ -18,10 +18,21 @@ class SongsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
-        $songs = Song::orderBy("created_at", "desc")->paginate(5);
-        return view("songs.index", ["songs" => $songs]);
+        $data = [];
+        if (\Auth::check()) {
+            $user = \Auth::user();
+            $songs = $user->feed_songs()->orderBy("created_at", "desc")->paginate(5);
+
+            $data = [
+                "user" => $user,
+                "songs" => $songs,
+            ];
+            $data += $this->counts($user);
+        }
+        return view("songs.index", $data);
     }
 
     /**
