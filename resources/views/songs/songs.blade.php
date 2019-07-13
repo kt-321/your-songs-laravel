@@ -89,6 +89,10 @@
                 </ul> 
             </div>
             
+            <div class="d-flex ml-4 my-2">
+                @include("favorite.favorite_button", ["song" => $song])
+            </div>
+            
             <div class="contributor-button ml-4 pr-2">
                 @if(Auth::id() === $song->user_id)
                     <a href="{{ route("songs.edit", ["id" => $song->id]) }}" class="btn btn-light mr-3 px-2 py-1">編集</a>
