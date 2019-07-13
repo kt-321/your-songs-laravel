@@ -90,6 +90,19 @@ h4.contributor-introduction-label{
     max-width: 300px;
 }
 
+.favorite-orange{
+    color: #fecb81;
+}
+
+.btn-unfavorite{
+    border: 1px solid #ff3366;
+    font-weight: bold;
+}
+
+.btn-favorite{
+    border: 2px solid #ffd700;
+    font-weight: bold;
+}
 
  /*　画面サイズが480pxから768pxのとき　*/
 @media screen and (min-width:480px) { 

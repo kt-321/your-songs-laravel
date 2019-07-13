@@ -71,6 +71,10 @@
                 @endif
             </div>
             
+            <div class="mt-2">
+                @include("favorite.favorite_button", ["song" => $song])
+            </div> 
+            
             <div class="song-time ml-auto mb-1">
                 <ul class="list-unstyled">
                     <li class="mr-3">
