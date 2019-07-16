@@ -6,32 +6,54 @@
             <!--曲タイトル-->
             <h3 class="song-title p-3 mb-4 text-center"><i class="fas fa-music mr-3"></i>{!! nl2br(e($song->title)) !!}</h3>
             
-            <div class="song-details">
-                <!--曲情報-->
-                <ul class="list-unstyled px-3">
-                    <li class="song-item mb-1"><i class="fas fa-guitar mr-1"></i>アーティスト：{!! nl2br(e($song->artist_name)) !!}</li>
-                    <li class="song-item mb-1"><i class="fas fa-history mr-1"></i>曲の年代：{!! nl2br(e($song->music_age)) !!}年代</li>
-                    @if($song->description)
-                    <li class="song-item mb-1">
-                        <div class="song-description-label">
-                            <i class="far fa-comment-dots mr-1"></i>説明
-                        </div>
-                        
-                        <div class="song-description-value">
-                            <p class="text-area">{!! nl2br(e($song->description)) !!}</p>
-                        </div>
-                    </li>
-                    @endif
+            <div class="row m-0">
+                <div class="col-md-4 text-center">
+                    <!--曲画像-->
+                    <figure>
+                        @if($song->image_url)
+                            <img src="{{ $song->image_url }}" class="song-image img-thumbnail">
+                        @else
+                            <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/song.jpeg" class="song-image img-thumbnail">
+                        @endif
                     
-                    @if($song->video_url)
-                    <li class="song-item mb-1 text-center">
-                       <div class="text-left mb-1"><i class="fab fa-youtube mr-1"></i>映像</div>
-                       <iframe class="song-video" src="https://www.youtube.com/embed/{!! nl2br(e($song->video_url)) !!}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </li>
-                    @else
-                    <li class="song-item mb-1"><i class="fab fa-youtube mr-1"></i>映像はありません。</li>
-                    @endif
-                </ul>
+                        <figcaption>
+                            <!--ログイン時、曲画像のアップロード-->
+                            @if(Auth::id() === $song->user_id)
+                            <div class="mt-2">
+                                <a href="{{ route("songs.imagesUploadForm", ["id" => $song->id]) }}" class="btn btn-primary btn-modify-profile">画像を変更</a>
+                            </div>
+                            @endif
+                        </figcaption>
+                    </figure>
+                </div>
+                
+                <div class="col-md-8">
+                    <!--曲情報-->
+                    <ul class="list-unstyled px-3">
+                        <li class="song-item mb-1"><i class="fas fa-guitar mr-1"></i>アーティスト：{!! nl2br(e($song->artist_name)) !!}</li>
+                        <li class="song-item mb-1"><i class="fas fa-history mr-1"></i>曲の年代：{!! nl2br(e($song->music_age)) !!}年代</li>
+                        @if($song->description)
+                        <li class="song-item mb-1">
+                            <div class="song-description-label">
+                                <i class="far fa-comment-dots mr-1"></i>説明
+                            </div>
+                            
+                            <div class="song-description-value">
+                                <p class="text-area">{!! nl2br(e($song->description)) !!}</p>
+                            </div>
+                        </li>
+                        @endif
+                        
+                        @if($song->video_url)
+                        <li class="song-item mb-1 text-center">
+                           <div class="text-left mb-1"><i class="fab fa-youtube mr-1"></i>映像</div>
+                           <iframe class="song-video" src="https://www.youtube.com/embed/{!! nl2br(e($song->video_url)) !!}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </li>
+                        @else
+                        <li class="song-item mb-1"><i class="fab fa-youtube mr-1"></i>映像はありません。</li>
+                        @endif
+                    </ul>
+                </div>
             </div>
             
             <a href="{{ route("songs.show", ["song" => $song]) }}" class="btn btn-light d-block mx-2 my-3">続きを読む</a>
@@ -91,7 +113,6 @@
                         </div>
                     
                         <a class="btn btn-success btn-sm" href="{{ route("users.show", ["id" => $song->user->id]) }}">プロフィール</a>
-                    </div>
                 </div>
                 @endif
             </div>
