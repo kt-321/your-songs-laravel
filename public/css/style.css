@@ -104,6 +104,13 @@ h4.contributor-introduction-label{
     font-weight: bold;
 }
 
+.circle1{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: thin solid rgba(0,153,255,.8);
+}
+
  /*　画面サイズが480pxから768pxのとき　*/
 @media screen and (min-width:480px) { 
 .song-video{
