@@ -84,8 +84,6 @@
                     
                     <div class="media-body">
                         <ul class="list-unstyled px-3">
-                            <li class="user-item mb-1"><a href="{{ route("users.show", ["id" => $song->user->id]) }}">{!! nl2br(e($song->user->name)) !!}</a></li>
-                            
                             @if($song->user->age)
                             <li class="user-item mb-1">{!! nl2br(e($song->user->age)) !!}代</li>
                             @else
