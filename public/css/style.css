@@ -111,6 +111,72 @@ h4.contributor-introduction-label{
   border: thin solid rgba(0,153,255,.8);
 }
 
+.circle2{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: thin solid rgba(0,153,255,.8);
+}
+
+.circle3{
+  width: 2.8vh;
+  height: 2.8vh;
+  border-radius: 50%;
+  border: thin solid rgba(0,153,255,.8);
+}
+
+.balloon-left{
+    position:relative;
+    min-width: 100px;
+    max-width: 200px;
+    background:#FFFFFF;
+    padding:10px;
+    margin:3px;
+    text-align:left;
+    border:2px solid #4ACAFF;
+    color:#000000;
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+}
+
+.balloon-left:after,.balloon-left:before{
+    border: solid transparent;
+    content:'';
+    height:0;
+    width:0;
+    pointer-events:none;
+    position:absolute;
+    right:100%;
+    top:50%;
+}
+
+.balloon-left:after{
+    border-color: rgba(255, 255, 255, 0);
+    border-top-width:10px;
+    border-bottom-width:10px;
+    border-left-width:10px;
+    border-right-width:10px;
+    margin-top: -10px;
+    border-right-color:#FFFFFF;
+}
+
+.balloon-left:before{
+    border-color: rgba(74, 202, 255, 0);
+    border-top-width:12px;
+    border-bottom-width:12px;
+    border-left-width:12px;
+    border-right-width:12px;
+    margin-top: -12px;
+    margin-right: 2px;
+    border-right-color:#4ACAFF;
+}
+
+.balloon-left p {
+  margin: 0;
+  padding: 0;
+}
+
  /*　画面サイズが480pxから768pxのとき　*/
 @media screen and (min-width:480px) { 
 .song-video{
@@ -122,6 +188,55 @@ h4.contributor-introduction-label{
     min-width: 150px;
     max-width: 400px;
 }
+
+.balloon-left{
+    position:relative;
+    display: inline-block;
+    min-width: 200px;
+    max-width: 300px;
+    background:#FFFFFF;
+    padding:10px;
+    margin:3px;
+    text-align:left;
+    border:2px solid #4ACAFF;
+    color:#000000;
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+}
+    
+.balloon-left:after,.balloon-left:before{
+    border: solid transparent;
+    content:'';
+    height:0;
+    width:0;
+    pointer-events:none;
+    position:absolute;
+    right:100%;
+    top:50%;
+}
+
+.balloon-left:after{
+    border-color: rgba(255, 255, 255, 0);
+    border-top-width:10px;
+    border-bottom-width:10px;
+    border-left-width:10px;
+    border-right-width:10px;
+    margin-top: -10px;
+    border-right-color:#FFFFFF;
+}
+
+.balloon-left:before{
+    border-color: rgba(74, 202, 255, 0);
+    border-top-width:12px;
+    border-bottom-width:12px;
+    border-left-width:12px;
+    border-right-width:12px;
+    margin-top: -12px;
+    margin-right: 2px;
+    border-right-color:#4ACAFF;
+}
+
 }
     
 /*　画面サイズが768pxから1024pxのとき　*/
@@ -135,6 +250,56 @@ h4.contributor-introduction-label{
     min-width: 150px;
     max-width: 500px;
 }
+
+.balloon-left{
+    position:relative;
+    display: inline-block;
+    min-width: 200px;
+    max-width: 400px;
+    /*height:80px;*/
+    background:#FFFFFF;
+    padding:10px;
+    margin:3px;
+    text-align:left;
+    border:2px solid #4ACAFF;
+    color:#000000;
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+}
+    
+.balloon-left:after,.balloon-left:before{
+    border: solid transparent;
+    content:'';
+    height:0;
+    width:0;
+    pointer-events:none;
+    position:absolute;
+    right:100%;
+    top:50%;
+}
+
+.balloon-left:after{
+    border-color: rgba(255, 255, 255, 0);
+    border-top-width:10px;
+    border-bottom-width:10px;
+    border-left-width:10px;
+    border-right-width:10px;
+    margin-top: -10px;
+    border-right-color:#FFFFFF;
+}
+
+.balloon-left:before{
+    border-color: rgba(74, 202, 255, 0);
+    border-top-width:12px;
+    border-bottom-width:12px;
+    border-left-width:12px;
+    border-right-width:12px;
+    margin-top: -12px;
+    margin-right: 2px;
+    border-right-color:#4ACAFF;
+}
+
 }
     
 /*　画面サイズが1024px以上のとき　*/
@@ -148,4 +313,53 @@ h4.contributor-introduction-label{
     min-width: 150px;
     max-width: 600px;
 }
+
+.balloon-left{
+    position:relative;
+    display: inline-block;
+    min-width: 200px;
+    max-width: 500px;
+    background:#FFFFFF;
+    padding:10px;
+    margin:3px;
+    text-align:left;
+    border:2px solid #4ACAFF;
+    color:#000000;
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+}
+   
+.balloon-left:after,.balloon-left:before{
+    border: solid transparent;
+    content:'';
+    height:0;
+    width:0;
+    pointer-events:none;
+    position:absolute;
+    right:100%;
+    top:50%;
+}
+   
+.balloon-left:after{
+    border-color: rgba(255, 255, 255, 0);
+    border-top-width:10px;
+    border-bottom-width:10px;
+    border-left-width:10px;
+    border-right-width:10px;
+    margin-top: -10px;
+    border-right-color:#FFFFFF;
+}
+    
+.balloon-left:before{
+    border-color: rgba(74, 202, 255, 0);
+    border-top-width:12px;
+    border-bottom-width:12px;
+    border-left-width:12px;
+    border-right-width:12px;
+    margin-top: -12px;
+    margin-right: 2px;
+    border-right-color:#4ACAFF;
+}
+
 }

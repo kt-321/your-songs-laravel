@@ -4,7 +4,15 @@
             <li class="media mb-3">
                 <div class="media-left mx-4">
                     <figure>
-                        <img class="mr-2 rounded" src="{{ Gravatar::src($user->email, 50) }}" alt="">
+                        @if($user->image_url)
+                            <img src="{{ $user->image_url }}" alt="アイコン" class="circle2"> 
+                        @elseif($user->gender == 1)
+                            <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/man.jpeg" alt="アイコン" class="circle2">
+                        @elseif($user->gender == 2)
+                            <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/woman.jpeg" alt="アイコン" class="circle2">
+                        @else    
+                            <img src="https://original-yoursongs.s3-ap-northeast-1.amazonaws.com/qustion-mark.jpeg" alt="アイコン" class="circle2">
+                        @endif
                         <figcaption class="text-center m-0">
                             <a href="{{ route("users.show", ["id" => $user->id]) }}">{{ $user->name }}</a>
                         </figcaption>

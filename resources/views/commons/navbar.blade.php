@@ -19,7 +19,12 @@
                     <li class="nav-item"><a href="{{ url("users") }}" class="nav-link"><i class="fas fa-user mr-1"></i>ユーザー</a></li>
                     <li class="nav-item"><a href="{{ url("songs/create") }}" class="nav-link"><i class="fas fa-plus mr-1"></i>曲を追加</a></li>
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                            @if(Auth::user()->image_url)  
+                            <img src="{{ Auth::user()->image_url }}" alt="アイコン" class="circle3">
+                            @endif
+                            {{ Auth::user()->name }}
+                        </a>
                         <ul class="dropdown-menu dropdown-menu-right bg-dark border-white">
                             <li class="dropdown-item"><a href="{{ route("users.show", ["id" => Auth::id()]) }}" class="text-white"><i class="fas fa-user-circle mr-1" style="color: white;"></i>マイページ</a></li>
                             <li class="dropdown-divider"></li>

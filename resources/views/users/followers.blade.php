@@ -21,6 +21,8 @@
             @endif
             
             <div class="user-profile">
+                @include("users.image", ["user" => $user])
+                
                 <!--ユーザー情報-->
                 <div class="status text-center mt-3" >
                     <h4 class="mt-2"><i class="far fa-address-card mr-2"></i>プロフィール</h4>
