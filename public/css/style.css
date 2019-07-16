@@ -125,6 +125,11 @@ h4.contributor-introduction-label{
   border: thin solid rgba(0,153,255,.8);
 }
 
+.song-image{
+  width: 150px;
+  height: 150px;
+}
+
 .balloon-left{
     position:relative;
     min-width: 100px;
