@@ -10,11 +10,64 @@ use App\Song;
 
 class UsersController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {   
         $users = User::orderBy("id", "desc")->paginate(10);
         
         return view("users.index", ["users" => $users]);
+        
+        // 値を取得
+        $name = $request->input("name");
+        $age = $request->input("age");
+        $gender = $request->input("gender");
+        
+        // 検索QUERY
+        $query = User::query();
+        
+        // もし「名前」があれば
+        if(!empty($name))
+        {
+            $query->where("name", "like", "%".$name. "%");
+        }
+        
+        // もし「年齢」が選択されていれば
+        if(!empty($age))
+        {
+            $query->where("age", "like", "%".$age. "%");
+        }
+        
+        // もし「性別」が選択されていれば
+        if(!empty($gender))
+        {
+            $query->where("gender", $gender);
+        }
+        
+        // ページネーション
+        $users = $query->orderBy("created_at", "desc")->paginate(10);
+        
+        // 「好きな音楽の年代が一致」または「好きなアーティスト名が部分一致」
+        // であるユーザーをログインユーザーへのおすすめユーザーとする。
+        $favorite_music_age = \Auth::user()->favorite_music_age;
+        $favorite_artist = \Auth::user()->favorite_artist;
+        
+        $recommended_users = User::where("id","<>",\Auth::id())
+        ->where(function($query)use($favorite_music_age, $favorite_artist){
+            $query->where("favorite_music_age", $favorite_music_age)
+            ->orWhere("favorite_artist", "like", "%".$favorite_artist. "%");
+        })
+        ->inRandomOrder()
+        ->limit(12)
+        ->get();
+    
+        $data = [
+        "name" => $name,
+        "age" => $age,
+        "gender" => $gender,
+        "users" => $users,
+        "recommended_users" => $recommended_users,
+        ];
+        
+        return view("users.index", $data);
     }
     
     
