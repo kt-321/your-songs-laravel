@@ -124,10 +124,84 @@ class SongsController extends Controller
     {
         $user = \Auth::user();
         
-        if($user->id=== $song->user_id){
+        if($user->id === $song->user_id){
             $song->delete();
         }
         
         return redirect("users/". $user->id);
+    }
+    
+    public function search(Request $request)
+    {
+        // 値を取得
+        $title = $request->input("title");
+        $artist_name = $request->input("artist_name");
+        $music_age = $request->input("music_age");
+        $order = $request->input("order");
+        
+        // 検索QUERY
+        $query = Song::query();
+        
+        // もし「曲名」があれば
+        if(!empty($song_name))
+        {
+            $query->where("song_name", "like", "%".$song_name. "%");
+        }
+        
+        // もし「アーティスト名」があれば
+        if(!empty($artist_name))
+        {
+            $query->where("artist_name", "like", "%".$artist_name. "%");
+        }
+        
+        // もし「年代」が選択されていれば
+        if(!empty($music_age))
+        {
+            $query->where("music_age", $music_age);
+        }
+        
+        // 並び替えで「投稿が新しい順」が選択されていれば
+        if($order == "created_at")
+        {
+            $query->orderBy("created_at", "desc");
+        }
+        // 並び替えで「お気に入りが多い順」が選択されていれば、
+        elseif($order == "favorites_ranking")
+        {
+            $query->withCount("favorite_users")->orderBy("favorite_users_count", "desc");
+        }
+        // 並び替えで「コメントが多い順」が選択されていれば
+        elseif($order == "comments_ranking")
+        {
+            $query->withCount("comments")->orderBy("comments_count", "desc");
+        }
+        
+        // ページネーション
+        $songs = $query->paginate(5);
+        
+        // 「曲の年代がユーザーの好きな音楽の年代と一致」または「アーティスト名がユーザーの好きなアーティスト名と部分一致」
+        // である曲をユーザーへのおすすめ曲とする。
+        $favorite_music_age = \Auth::user()->favorite_music_age;
+        $favorite_artist = \Auth::user()->favorite_artist;
+        
+        $recommended_songs = Song::where("user_id","<>", \Auth::id())
+        ->where(function($query)use($favorite_music_age, $favorite_artist){
+            $query->where("music_age", $favorite_music_age)
+            ->orWhere("artist_name", "like", "%".$favorite_artist. "%");
+        })
+        ->inRandomOrder()
+        ->limit(12)
+        ->get();
+        
+        $data = [
+        "title" => $title,
+        "artist_name" => $artist_name,
+        "music_age" => $music_age,
+        "order" => $order,
+        "songs" => $songs,
+        "recommended_songs" => $recommended_songs
+        ];
+        
+        return view("songs.search", $data);
     }
 }
