@@ -51,8 +51,8 @@ class UsersController extends Controller
         $favorite_artist = \Auth::user()->favorite_artist;
         
         $recommended_users = User::where("id","<>",\Auth::id())
-        ->where(function($query)use($favorite_music_age, $favorite_artist){
-            $query->where("favorite_music_age", $favorite_music_age)
+        ->where(function($query2)use($favorite_music_age, $favorite_artist){
+            $query2->where("favorite_music_age", $favorite_music_age)
             ->orWhere("favorite_artist", "like", "%".$favorite_artist. "%");
         })
         ->inRandomOrder()
