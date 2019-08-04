@@ -10,12 +10,8 @@ use App\Song;
 
 class UsersController extends Controller
 {
-    public function index(Request $request)
+    public function search(Request $request)
     {   
-        $users = User::orderBy("id", "desc")->paginate(10);
-        
-        return view("users.index", ["users" => $users]);
-        
         // 値を取得
         $name = $request->input("name");
         $age = $request->input("age");
@@ -43,7 +39,7 @@ class UsersController extends Controller
         }
         
         // ページネーション
-        $users = $query->orderBy("created_at", "desc")->paginate(10);
+        $users = $query->orderBy("created_at", "desc")->paginate(6);
         
         // 「好きな音楽の年代が一致」または「好きなアーティスト名が部分一致」
         // であるユーザーをログインユーザーへのおすすめユーザーとする。
@@ -67,7 +63,7 @@ class UsersController extends Controller
         "recommended_users" => $recommended_users,
         ];
         
-        return view("users.index", $data);
+        return view("users.search", $data);
     }
     
     

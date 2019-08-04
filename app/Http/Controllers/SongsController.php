@@ -143,9 +143,9 @@ class SongsController extends Controller
         $query = Song::query();
         
         // もし「曲名」があれば
-        if(!empty($song_name))
+        if(!empty($title))
         {
-            $query->where("song_name", "like", "%".$song_name. "%");
+            $query->where("title", "like", "%".$title. "%");
         }
         
         // もし「アーティスト名」があれば
