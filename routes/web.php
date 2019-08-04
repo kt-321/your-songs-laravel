@@ -34,11 +34,13 @@ Route::group(["middleware" => "auth"], function(){
     // ログアウト
     Route::get("logout", "Auth\LoginController@logout")->name("logout.get");
     
-    // ユーザー一覧・ユーザープロフィール詳細・マイプロフィール編集・マイプロフィール更新
-    Route::resource("users", "UsersController", ["only" => ["index", "show", "edit", "update"]]);
+    // ユーザープロフィール詳細・マイプロフィール編集・マイプロフィール更新
+    Route::resource("users", "UsersController", ["only" => ["show", "edit", "update"]]);
     
     // 曲の一覧表示・登録画面表示・登録処理・取得表示・更新画面表示・更新処理・削除処理
     Route::resource("songs", "SongsController");
+    
+    
     
     Route::group(["prefix" => "users/{id}"], function(){
         Route::post("follow", "UserFollowController@store")->name("user.follow");
@@ -55,5 +57,12 @@ Route::group(["middleware" => "auth"], function(){
         Route::delete("unfavorite", "FavoritesController@destroy")->name("favorites.unfavorite");
         Route::get("images", "SongImagesController@uploadForm")->name("songs.imagesUploadForm");
         Route::post("images", "SongImagesController@upload")->name("songs.imagesUpload");
+    });
+    
+    Route::group(["prefix" => "search"], function(){
+        // ユーザーの検索機能
+        Route::get("users", "UsersController@search")->name("users.search");
+        // 曲の検索機能
+        Route::get("songs", "SongsController@search")->name("songs.search");
     });
 });
