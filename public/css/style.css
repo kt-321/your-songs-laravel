@@ -90,6 +90,31 @@ h4.contributor-introduction-label{
     max-width: 300px;
 }
 
+.self-introduction2{
+    position:relative;
+    /*width:500px;*/
+    /*min-width: 30px;*/
+    /*max-width: 500px;*/
+    /*height:80px;*/
+    background:#FFFFFF;
+    padding:10px;
+    margin:3px;
+    text-align:center;
+    border:1px solid #4ACAFF;
+    color:#000000;
+    /*font-size:30px;*/
+    /*font-weight:bold;*/
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    word-wrap: break-word;
+}
+
+.self-introduction2 p{
+  margin: 0;
+  padding: 0;
+}
+
 .favorite-orange{
     color: #fecb81;
 }
@@ -121,6 +146,13 @@ h4.contributor-introduction-label{
 .circle3{
   width: 2.8vh;
   height: 2.8vh;
+  border-radius: 50%;
+  border: thin solid rgba(0,153,255,.8);
+}
+
+.circle4{
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   border: thin solid rgba(0,153,255,.8);
 }
@@ -180,6 +212,23 @@ h4.contributor-introduction-label{
 .balloon-left p {
   margin: 0;
   padding: 0;
+}
+
+.user-card{
+  background:#FFFFFF;
+  padding:10px;
+  margin:5px 0 8px 0;
+  border:1px solid #9966FF;
+  border-radius:10px;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  min-height: 350px;
+}
+    
+.user-card p{
+  margin: 0;
+  padding: 0;
+  font-size:15px;
 }
 
  /*　画面サイズが480pxから768pxのとき　*/

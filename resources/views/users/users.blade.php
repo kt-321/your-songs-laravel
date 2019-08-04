@@ -45,5 +45,5 @@
             </li>
         @endforeach
     </ul>
-    {{ $users->render("pagination::bootstrap-4") }}
+    <!--{{ $users->render("pagination::bootstrap-4") }}-->
 @endif
