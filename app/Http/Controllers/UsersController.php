@@ -16,6 +16,8 @@ class UsersController extends Controller
         $name = $request->input("name");
         $age = $request->input("age");
         $gender = $request->input("gender");
+        $favorite_music_age = $request->input("favorite_music_age");
+        $favorite_artist = $request->input("favorite_artist");
         
         // 検索QUERY
         $query = User::query();
@@ -38,18 +40,30 @@ class UsersController extends Controller
             $query->where("gender", $gender);
         }
         
+        // もし「好きな音楽の年代」が選択されていれば
+        if(!empty($favorite_music_age))
+        {
+            $query->where("favorite_music_age", $favorite_music_age);
+        }
+        
+        // もし「好きなアーティスト」があれば
+        if(!empty($favorite_artist))
+        {
+            $query->where("favorite_artist", "like", "%".$favorite_artist. "%");
+        }
+        
         // ページネーション
         $users = $query->orderBy("created_at", "desc")->paginate(6);
         
         // 「好きな音楽の年代が一致」または「好きなアーティスト名が部分一致」
         // であるユーザーをログインユーザーへのおすすめユーザーとする。
-        $favorite_music_age = \Auth::user()->favorite_music_age;
-        $favorite_artist = \Auth::user()->favorite_artist;
+        $my_favorite_music_age = \Auth::user()->favorite_music_age;
+        $my_favorite_artist = \Auth::user()->favorite_artist;
         
         $recommended_users = User::where("id","<>",\Auth::id())
-        ->where(function($query2)use($favorite_music_age, $favorite_artist){
-            $query2->where("favorite_music_age", $favorite_music_age)
-            ->orWhere("favorite_artist", "like", "%".$favorite_artist. "%");
+        ->where(function($query2)use($my_favorite_music_age, $my_favorite_artist){
+            $query2->where("favorite_music_age", $my_favorite_music_age)
+            ->orWhere("favorite_artist", "like", "%".$my_favorite_artist. "%");
         })
         ->inRandomOrder()
         ->limit(12)
@@ -59,6 +73,8 @@ class UsersController extends Controller
         "name" => $name,
         "age" => $age,
         "gender" => $gender,
+        "favorite_music_age" => $favorite_music_age,
+        "favorite_artist" => $favorite_artist,
         "users" => $users,
         "recommended_users" => $recommended_users,
         ];
