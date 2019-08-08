@@ -54,14 +54,45 @@
                 </div>
             </div>
         </div>
+        
+        <div class="form-group">
+            <div class="row m-0">
+                <div class="col-sm-3 my-auto">
+                    <label class="form-label m-0">好きな音楽の年代</label>
+                </div>
+                
+                <div class="col-sm-4">
+                    <select name="favorite_music_age" class="form-control select select-primary mbl" data-toggle="select">
+                        <option value="">全て</option>
+                        <option value=1970 @if($favorite_music_age==1970) selected @endif>1970年代</option>
+                        <option value=1980 @if($favorite_music_age==1980) selected @endif>1980年代</option>
+                        <option value=1990 @if($favorite_music_age==1990) selected @endif>1990年代</option>
+                        <option value=2000 @if($favorite_music_age==2000) selected @endif>2000年代</option>
+                        <option value=2010 @if($favorite_music_age==2010) selected @endif>2010年代</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="row m-0">
+                <div class="col-sm-3 my-auto">
+                    <label class="form-label m-0">好きなアーティスト</label>
+                </div>
+                
+                <div class="col-sm-5">
+                    <input class="form-control" type="text" name="favorite_artist" value="{{ $favorite_artist }}" placeholder="好きなアーティスト名を入力">
+                </div>
+            </div>
+        </div>
      
-      <div class="col-xs-offset-2 col-xs-10 text-center">
-          <button type="submit" class="btn btn-default btn-success">以上の条件で検索</button>
-      </div>
+        <div class="col-xs-offset-2 col-xs-10 text-center">
+            <button type="submit" class="btn btn-default btn-success">以上の条件で検索</button>
+        </div>
     </form>
         
     <!--検索結果の表示-->
-    @if($name != "" || $age != "" || $gender != "")
+    @if($name != "" || $age != "" || $gender != "" || $favorite_music_age != "" || $favorite_artist != "")
         @if(count($users) == 0)
         <p class="text-center mt-3 mb-0">該当する曲は見つかりませんでした。</p>
         @endif   
@@ -69,7 +100,7 @@
             
     <!--ページネーション-->
     <div class="paginate text-center mt-3 mb-2">
-        {{ $users->appends(["name"=>$name, "age"=>$age, "gender"=>$gender])->render("pagination::bootstrap-4") }}
+        {{ $users->appends(["name"=>$name, "age"=>$age, "gender"=>$gender, "favorite_music_age"=>$favorite_music_age, "favorite_artist"=>$favorite_artist])->render("pagination::bootstrap-4") }}
     </div>
     
     
@@ -135,7 +166,7 @@
 
     <!--ページネーション-->
     <div class="paginate text-center mt-3 mb-5">
-        {{ $users->appends(["name"=>$name, "age"=>$age, "gender"=>$gender])->render("pagination::bootstrap-4") }}
+        {{ $users->appends(["name"=>$name, "age"=>$age, "gender"=>$gender, "favorite_music_age"=>$favorite_music_age, "favorite_artist"=>$favorite_artist])->render("pagination::bootstrap-4") }}
     </div>
 
     <!--おすすめのユーザー-->
