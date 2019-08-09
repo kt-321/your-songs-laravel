@@ -17,4 +17,9 @@ class Song extends Model
     {
         return $this->belongsToMany(User::class, "favorites", "song_id", "user_id");
     }
+    
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
