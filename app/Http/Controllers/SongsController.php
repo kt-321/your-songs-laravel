@@ -185,8 +185,8 @@ class SongsController extends Controller
         $favorite_artist = \Auth::user()->favorite_artist;
         
         $recommended_songs = Song::where("user_id","<>", \Auth::id())
-        ->where(function($query2)use($favorite_music_age, $favorite_artist){
-            $query2->where("music_age", $favorite_music_age)
+        ->where(function($key)use($favorite_music_age, $favorite_artist){
+            $key->where("music_age", $favorite_music_age)
             ->orWhere("artist_name", "like", "%".$favorite_artist. "%");
         })
         ->inRandomOrder()
