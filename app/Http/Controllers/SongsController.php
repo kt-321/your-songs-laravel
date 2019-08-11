@@ -74,12 +74,14 @@ class SongsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Song $song)
-    {
+    {   
+        $comments = $song->comments()->orderBy("created_at", "desc")->paginate(10);
         $user = \Auth::user();
         
         return view("songs.show",[
             "song" => $song,
             "user" => $user,
+            "comments" => $comments,
         ]);
     }
 
