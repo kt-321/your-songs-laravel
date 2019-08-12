@@ -40,7 +40,8 @@ Route::group(["middleware" => "auth"], function(){
     // 曲の一覧表示・登録画面表示・登録処理・取得表示・更新画面表示・更新処理・削除処理
     Route::resource("songs", "SongsController");
     
-    
+    // 曲へのコメントの投稿・削除
+    Route::resource("comments", "CommentsController", ["only" =>["store", "destroy"]]);
     
     Route::group(["prefix" => "users/{id}"], function(){
         Route::post("follow", "UserFollowController@store")->name("user.follow");
