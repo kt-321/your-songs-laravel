@@ -142,4 +142,81 @@
         </div>
         
     </section>
+    
+    <section class="comment">
+        <div class="comments-index mb-5">
+            
+            @if(count($song->comments) > 0)
+            <p class="comments-counts"><i class="far fa-comments mr-2"></i>コメント（{{ count($song->comments) }}）</p>
+            @else
+            <p>コメントはまだありません。</p>
+            @endif
+            
+            <div class="comment-display">
+                <ul class="list-unstyled">
+                @foreach($comments as $comment)
+                    <li class ="py-2 border-top">
+                        <div class="d-flex">
+                                <figure class="ml-3 mr-4 my-auto">
+                                    @if($comment->user->image_url)
+                                    <img src="{{ $comment->user->image_url }}" alt="画像" class="circle2"> 
+                                    @elseif($comment->user->gender == 1)
+                                    <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/man.jpeg" alt="画像" class="circle2">
+                                    @elseif($comment->user->gender == 2)
+                                    <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/woman.jpeg" alt="画像" class="circle2">
+                                    @else
+                                    <img src="https://original-yoursongs.s3-ap-northeast-1.amazonaws.com/qustion-mark.jpeg" alt="画像" class="circle2">
+                                    @endif 
+                                    <figcaption class="text-center m-0">
+                                        <a class="comment-user-name" href="{{ route("users.show", ["id" => $comment->user->id]) }}">{{ $comment->user->name }}</a>
+                                    </figcaption>
+                                </figure>
+                                
+                                <div class="balloon-left ml-3 my-auto">
+                                    <p>{{ $comment->body }}</p>
+                                </div>
+                        </div>    
+                        
+                        <div class="comment-side ml-auto mb-1">
+                            <ul class="list-unstyled">
+                                <li class="mr-3">
+                                    <span class="post-time text-muted">  投稿  {{ $comment->created_at }}</span>
+                                </li>
+                                <li class="mr-3">
+                                    @if(Auth::id() === $comment->user_id)
+                                    {!! Form::open(["route" => ["comments.destroy", $comment->id], "method" => "delete"]) !!}
+                                        {!! Form::submit("削除", ["class" => "btn btn-danger btn-sm"]) !!}
+                                    {!! Form::close() !!}
+                                    @endif
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endforeach
+                </ul>
+            </div>
+            
+            {{ $comments->render("pagination::bootstrap-4") }}
+        </div>
+    
+        <div class="comment-post-form">        
+            <h4 class="mb-3 text-center"><i class="far fa-comment mr-2"></i>コメントを投稿する</h2>
+            
+            <div class="comment-form">   
+                    {!! Form::open(["route" => ["comments.store", $song->id]]) !!}
+                        {!! Form::hidden("song_id", $song->id) !!}
+                        {!! Form::hidden("user_id", $user->id) !!}
+                        
+                        
+                        <div class="row m-0">
+                            {!! Form::textarea("body", old("body"), ["class" => "form-control col-sm-8 offset-sm-2", "rows" => "4"]) !!}
+                        </div>
+                        
+                        <div class="text-center m-3">
+                            {!! Form::submit("投稿する", ["class" => "btn btn-primary"]) !!}
+                        </div>   
+                    {!! Form::close() !!}
+            </div>
+        </div>
+    </section>
 @endsection
