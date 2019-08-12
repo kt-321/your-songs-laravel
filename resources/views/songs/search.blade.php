@@ -215,6 +215,8 @@
                         
                         <div class="d-flex ml-4 my-2">
                             @include("favorite.favorite_button", ["song" => $song])
+                            
+                            <a href="{{ route("songs.show", ["song" => $song]) }}" class="btn btn-light d-block p-1 ml-2"><i class="far fa-comments mr-2"></i>コメント {{ count($song->comments) }} 件</a>
                         </div>
                         
                         <div class="contributor-button ml-4 pr-2">

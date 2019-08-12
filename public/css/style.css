@@ -175,6 +175,7 @@ h4.contributor-introduction-label{
     border-radius:10px;
     -webkit-border-radius:10px;
     -moz-border-radius:10px;
+    word-wrap: break-word;
 }
 
 .balloon-left:after,.balloon-left:before{
@@ -229,6 +230,14 @@ h4.contributor-introduction-label{
   margin: 0;
   padding: 0;
   font-size:15px;
+}
+
+.comment-side{
+  width: 200px;
+}
+
+.comment-user-name{
+  font-size: 15px;
 }
 
  /*　画面サイズが480pxから768pxのとき　*/
