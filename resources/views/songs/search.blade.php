@@ -245,5 +245,52 @@
                 </div>
                 
                 <!--おすすめ曲-->
-                <!--Vue.jsを実装次第作成-->
+                <div id="recommended-songs" class="mb-5">
+                    <span class="badge badge-pill badge-success mb-2">あなたへのおすすめ曲</span>
+                    <carousel :per-page-custom="[[0, 1], [768, 2], [992, 3]]" :autoplay="true" :loop="true" :speed=3000 :navigation-enabled="true" :pagination-enabled="false">
+                        @foreach($recommended_songs as $recommended_song)
+                        <slide class="border py-1">
+                            <a href="{{ url("songs/{$recommended_song->id}") }}" class="text-dark">
+                                <figure>
+                                    @if($recommended_song->image_url)
+                                        <img src="{{ $recommended_song->image_url }}" class="recommended-song-image img-thumbnail">
+                                    @else
+                                        <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/song.jpeg" class="recommended-song-image img-thumbnail">
+                                    @endif
+                                
+                                    <figcaption></figcaption>
+                                </figure>
+                                <ul class="list-unstyled px-3">
+                                    <li class="song-item mb-1">
+                                        <i class="fas fa-music mr-3"></i>
+                                        曲名：{!! nl2br(e($recommended_song->title)) !!}
+                                    </li>
+                                    <li class="song-item mb-1">
+                                        <i class="fas fa-guitar mr-1"></i>
+                                        アーティスト：{!! nl2br(e($recommended_song->artist_name)) !!}
+                                    </li>
+                                    <li class="song-item mb-1">
+                                        <i class="fas fa-history mr-1"></i>
+                                        曲の年代：{!! nl2br(e($recommended_song->music_age)) !!}年代
+                                    </li>
+                                </ul>
+                                <div class="about-user">
+                                    @if($recommended_song->user->image_url)
+                                        <img src="{{ $recommended_song->user->image_url }}" alt="画像" class="circle3" > 
+                                    @elseif($recommended_song->user->gender == 1)
+                                        <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/man.jpeg" alt="画像" class="circle3">
+                                    @elseif($recommended_song->user->gender == 2)
+                                        <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/woman.jpeg" alt="画像" class="circle3">
+                                    @else
+                                        <img src="https://original-yoursongs.s3-ap-northeast-1.amazonaws.com/qustion-mark.jpeg" alt="画像" class="circle3">
+                                    @endif
+                                    <a href="{{ route("users.show", ["id" => $recommended_song->user->id]) }}">
+                                        {{ $recommended_song->user->name }}
+                                    </a>
+                                </div>
+                            </a>
+                        </slide>
+                        @endforeach
+                    </carousel>
+                </div>
     @endsection

@@ -13,7 +13,7 @@
     <body>
         @include("commons.navbar")
       
-        <div class="container p-4">
+        <div class="container p-4" id="app">
             @include("commons.error_messages")
             
             @yield("content")

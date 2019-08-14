@@ -170,6 +170,55 @@
     </div>
 
     <!--おすすめのユーザー-->
-    <!--Vue.jsを導入後に記述を行う-->
-
+        <div id="recommended-users" class="mb-5">
+            <span class="badge badge-pill badge-success mb-2">あなたと音楽の趣味が合いそうなユーザー</span>
+            <carousel :per-page-custom="[[0, 1], [768, 2], [992, 3]]" :autoplay="true" :loop="true" :speed=3000 :navigation-enabled="true" :pagination-enabled="false">
+                @foreach($recommended_users as $recommended_user)
+                <slide class="border py-1">
+                    <a href="{{ url("users/{$recommended_user->id}") }}" class="text-dark">
+                        <figure class="text-center pt-2 m-0">
+                            @if($recommended_user->image_url)
+                                <img src="{{ $recommended_user->image_url }}" alt="アイコン" class="circle4"> 
+                            @elseif($recommended_user->gender == 1)
+                                <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/man.jpeg" alt="アイコン" class="circle4">
+                            @elseif($recommended_user->gender == 2)
+                                <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/woman.jpeg" alt="アイコン" class="circle4">
+                            @else    
+                                <img src="https://original-yoursongs.s3-ap-northeast-1.amazonaws.com/qustion-mark.jpeg" alt="アイコン" class="circle4">
+                            @endif
+                            <figcaption class="text-center text-primary m-0">
+                                {{ $recommended_user->name }}
+                            </figcaption>
+                        </figure>
+                            
+                        <ul class="list-unstyled px-3">
+                            @if($recommended_user->age)
+                            <li class="mb-0">{!! nl2br(e($recommended_user->age)) !!}代</li>
+                            @endif
+                            
+                            @if($recommended_user->gender == 1)
+                            <li class="mb-0">男性 </li>
+                            @elseif($recommended_user->gender == 2)
+                            <li class="mb-0">女性 </li>
+                            @endif
+                            
+                            @if($recommended_user->favorite_artist)
+                            <li class="mb-1" style="word-wrap: break-word;">
+                                <i class="fas fa-guitar mr-1"></i>
+                                好きなミュージシャン：{!! nl2br(e($recommended_user->favorite_artist)) !!}
+                            </li>
+                            @endif
+                            
+                            @if($recommended_user->favorite_music_age)
+                            <li class="mb-1" style="word-wrap: break-word;">
+                                <i class="fas fa-history mr-1"></i>
+                                好きな年代：{!! nl2br(e($recommended_user->favorite_music_age)) !!}年代
+                            </li>
+                            @endif
+                        </ul>
+                    </a>
+                </slide>
+                @endforeach
+            </carousel>
+        </div>
 @endsection

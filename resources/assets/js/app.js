@@ -9,6 +9,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+var VueCarousel = require('vue-carousel');
+Vue.use(VueCarousel)
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -18,5 +21,9 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    components: {
+    carousel: VueCarousel.Carousel,
+    slide: VueCarousel.Slide
+     },
 });

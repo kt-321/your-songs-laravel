@@ -162,6 +162,21 @@ h4.contributor-introduction-label{
   height: 150px;
 }
 
+/*おすすめ曲の曲画像*/
+.recommended-song-image{
+  width: 75px;
+  height: 75px;
+}
+
+/*カルーセル*/
+.VueCarousel-slide {
+  position: relative;
+  min-height: 50px;
+  text-align: center;
+  font-size: 15px;
+  color: black;
+}
+
 .balloon-left{
     position:relative;
     min-width: 100px;
