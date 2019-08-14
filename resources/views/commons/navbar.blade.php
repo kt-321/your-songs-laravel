@@ -16,7 +16,7 @@
                 <!--ログイン中のナビゲーションバー-->
                 @if (Auth::check())
                     <li class="nav-item"><a href="{{ url("songs") }}" class="nav-link"><i class="far fa-clock mr-1"></i>タイムライン</a></li>
-                    <li class="nav-item"><a href="{{ url("search/songs") }}" class="nav-link"><i class="fas fa-user mr-1"></i>曲を検索</a></li>
+                    <li class="nav-item"><a href="{{ url("search/songs") }}" class="nav-link"><i class="fas fa-music mr-1"></i>曲を検索</a></li>
                     <li class="nav-item"><a href="{{ url("search/users") }}" class="nav-link"><i class="fas fa-user mr-1"></i>ユーザーを検索</a></li>
                     <li class="nav-item"><a href="{{ url("songs/create") }}" class="nav-link"><i class="fas fa-plus mr-1"></i>曲を追加</a></li>
                     <li class="nav-item dropdown">
