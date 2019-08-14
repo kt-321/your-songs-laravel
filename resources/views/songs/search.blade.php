@@ -39,11 +39,11 @@
                         <div class="col-sm-4">
                             <select name="music_age" class="form-control select select-primary mbl" data-toggle="select">
                                 <option value="">全て</option>
-                                <option value="1970" @if($music_age=="1970") selected @endif>1970年代</option>
-                                <option value="1980" @if($music_age=="1980") selected @endif>1980年代</option>
-                                <option value="1990" @if($music_age=="1990") selected @endif>1990年代</option>
-                                <option value="2000" @if($music_age=="2000") selected @endif>2000年代</option>
-                                <option value="2010" @if($music_age=="2010") selected @endif>2010年代</option>
+                                <option value="1970" @if($music_age === "1970") selected @endif>1970年代</option>
+                                <option value="1980" @if($music_age === "1980") selected @endif>1980年代</option>
+                                <option value="1990" @if($music_age === "1990") selected @endif>1990年代</option>
+                                <option value="2000" @if($music_age === "2000") selected @endif>2000年代</option>
+                                <option value="2010" @if($music_age === "2010") selected @endif>2010年代</option>
                             </select>
                         </div>
                     </div>
@@ -57,9 +57,9 @@
                         
                         <div class="col-sm-4">
                             <select name="order" class="form-control select select-primary mbl" data-toggle="select">
-                                <option value="created_at" @if($order=="created_at") selected @endif>投稿が新しい順</option>
-                                <option value="favorites_ranking" @if($order=="favorites_ranking") selected @endif>お気に入りが多い順</option>
-                                <option value="comments_ranking" @if($order=="comments_ranking") selected @endif>コメントが多い順</option>
+                                <option value="created_at" @if($order === "created_at") selected @endif>投稿が新しい順</option>
+                                <option value="favorites_ranking" @if($order === "favorites_ranking") selected @endif>お気に入りが多い順</option>
+                                <option value="comments_ranking" @if($order === "comments_ranking") selected @endif>コメントが多い順</option>
                             </select>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
             
             <!--曲が見つからなかったときの表示-->
                 @if($title != "" || $artist_name != "" || $music_age != "")
-                    @if(count($songs) == 0)
+                    @if(count($songs) === 0)
                     <p class="text-center mt-3 mb-0">該当する曲は見つかりませんでした。</p>
                     @endif   
                 @endif
@@ -155,9 +155,9 @@
                                         <figure>
                                             @if($song->user->image_url)
                                                 <img src="{{ $song->user->image_url }}" alt="画像" class="circle2" > 
-                                            @elseif($song->user->gender == 1)
+                                            @elseif($song->user->gender === "1")
                                                 <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/man.jpeg" alt="画像" class="circle2">
-                                            @elseif($song->user->gender == 2)
+                                            @elseif($song->user->gender === "2")
                                                 <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/woman.jpeg" alt="画像" class="circle2">
                                             @else
                                                 <img src="https://original-yoursongs.s3-ap-northeast-1.amazonaws.com/qustion-mark.jpeg" alt="画像" class="circle2">
@@ -174,9 +174,9 @@
                                             <li class="mb-1">{!! nl2br(e($song->user->age)) !!}代</li>
                                             @endif
                                             
-                                            @if($song->user->gender == 1)
+                                            @if($song->user->gender === "1")
                                             <li class="user-item mb-1">男性</li>
-                                            @elseif($song->user->gender == 2)
+                                            @elseif($song->user->gender === "2")
                                             <li class="user-item mb-1">女性</li>
                                             @endif
                                             
@@ -230,11 +230,7 @@
                         </div>
                         
                         <!--管理者としてログインしている場合に限り曲を削除できる-->
-                        @if(Auth::user()->role == 5 && Auth::id() !== $song->user->id)
-                            <div class="buttons-delete-user mb-3 text-center">
-                                <a class="btn btn-danger" href="/delete/{{ $song->id}}" onclick="delete_alert();return false;">この曲を削除</a>
-                            </div>
-                        @endif
+                        <!--管理者権限を追加してから作成する-->
                     </li>
                 @endforeach
                 </ul>
@@ -277,9 +273,9 @@
                                 <div class="about-user">
                                     @if($recommended_song->user->image_url)
                                         <img src="{{ $recommended_song->user->image_url }}" alt="画像" class="circle3" > 
-                                    @elseif($recommended_song->user->gender == 1)
+                                    @elseif($recommended_song->user->gender === "1")
                                         <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/man.jpeg" alt="画像" class="circle3">
-                                    @elseif($recommended_song->user->gender == 2)
+                                    @elseif($recommended_song->user->gender === "2")
                                         <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/woman.jpeg" alt="画像" class="circle3">
                                     @else
                                         <img src="https://original-yoursongs.s3-ap-northeast-1.amazonaws.com/qustion-mark.jpeg" alt="画像" class="circle3">

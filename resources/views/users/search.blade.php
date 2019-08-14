@@ -27,13 +27,13 @@
                 <div class="col-sm-4">
                     <select name="age" class="form-control select select-primary mbl" data-toggle="select">
                         <option value="">全て</option>
-                        <option value="10" @if($age=="10") selected @endif>10代</option>
-                        <option value="20" @if($age=="20") selected @endif>20代</option>
-                        <option value="30" @if($age=="30") selected @endif>30代</option>
-                        <option value="40" @if($age=="40") selected @endif>40代</option>
-                        <option value="50" @if($age=="50") selected @endif>50代</option>
-                        <option value="60" @if($age=="60") selected @endif>60代</option>
-                        <option value="70" @if($age=="70") selected @endif>70代</option>
+                        <option value="10" @if($age === "10") selected @endif>10代</option>
+                        <option value="20" @if($age === "20") selected @endif>20代</option>
+                        <option value="30" @if($age === "30") selected @endif>30代</option>
+                        <option value="40" @if($age === "40") selected @endif>40代</option>
+                        <option value="50" @if($age === "50") selected @endif>50代</option>
+                        <option value="60" @if($age === "60") selected @endif>60代</option>
+                        <option value="70" @if($age === "70") selected @endif>70代</option>
                     </select>
                 </div>
             </div>
@@ -48,8 +48,8 @@
                 <div class="col-sm-4">
                     <select name="gender" class="form-control select select-primary mbl" data-toggle="select">
                         <option value="">全て</option>
-                        <option value="1" @if($gender=="1") selected @endif>男性</option>
-                        <option value="2" @if($gender=="2") selected @endif>女性</option>
+                        <option value="1" @if($gender === "1") selected @endif>男性</option>
+                        <option value="2" @if($gender === "2") selected @endif>女性</option>
                     </select>
                 </div>
             </div>
@@ -64,11 +64,11 @@
                 <div class="col-sm-4">
                     <select name="favorite_music_age" class="form-control select select-primary mbl" data-toggle="select">
                         <option value="">全て</option>
-                        <option value=1970 @if($favorite_music_age==1970) selected @endif>1970年代</option>
-                        <option value=1980 @if($favorite_music_age==1980) selected @endif>1980年代</option>
-                        <option value=1990 @if($favorite_music_age==1990) selected @endif>1990年代</option>
-                        <option value=2000 @if($favorite_music_age==2000) selected @endif>2000年代</option>
-                        <option value=2010 @if($favorite_music_age==2010) selected @endif>2010年代</option>
+                        <option value=1970 @if($favorite_music_age === "1970") selected @endif>1970年代</option>
+                        <option value=1980 @if($favorite_music_age === "1980") selected @endif>1980年代</option>
+                        <option value=1990 @if($favorite_music_age === "1990") selected @endif>1990年代</option>
+                        <option value=2000 @if($favorite_music_age === "2000") selected @endif>2000年代</option>
+                        <option value=2010 @if($favorite_music_age === "2010") selected @endif>2010年代</option>
                     </select>
                 </div>
             </div>
@@ -93,7 +93,7 @@
         
     <!--検索結果の表示-->
     @if($name != "" || $age != "" || $gender != "" || $favorite_music_age != "" || $favorite_artist != "")
-        @if(count($users) == 0)
+        @if(count($users) === 0)
         <p class="text-center mt-3 mb-0">該当する曲は見つかりませんでした。</p>
         @endif   
     @endif
@@ -112,9 +112,9 @@
             <div class="user-card card text-center">
                     @if($user->image_url)
                         <img src="{{ $user->image_url }}" alt="アイコン" class="circle4 mx-auto"> 
-                    @elseif($user->gender == 1)
+                    @elseif($user->gender === "1")
                         <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/man.jpeg" alt="アイコン" class="circle4 mx-auto">
-                    @elseif($user->gender == 2)
+                    @elseif($user->gender === "2")
                         <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/woman.jpeg" alt="アイコン" class="circle4 mx-auto">
                     @else    
                         <img src="https://original-yoursongs.s3-ap-northeast-1.amazonaws.com/qustion-mark.jpeg" alt="アイコン" class="circle4 mx-auto">
@@ -127,10 +127,10 @@
                     <p class="mb-0"></p>
                     @endif
                     
-                    @if($user->gender == 1)
-                    <p class="mb-0">男性 </p>
-                    @elseif($user->gender == 2)
-                    <p class="mb-0">女性 </p>
+                    @if($user->gender === "1")
+                    <p class="mb-0">男性</p>
+                    @elseif($user->gender === "2")
+                    <p class="mb-0">女性</p>
                     @endif
                     
                     @if($user->favorite_music_age)
@@ -179,9 +179,9 @@
                         <figure class="text-center pt-2 m-0">
                             @if($recommended_user->image_url)
                                 <img src="{{ $recommended_user->image_url }}" alt="アイコン" class="circle4"> 
-                            @elseif($recommended_user->gender == 1)
+                            @elseif($recommended_user->gender === "1")
                                 <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/man.jpeg" alt="アイコン" class="circle4">
-                            @elseif($recommended_user->gender == 2)
+                            @elseif($recommended_user->gender === "2")
                                 <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/woman.jpeg" alt="アイコン" class="circle4">
                             @else    
                                 <img src="https://original-yoursongs.s3-ap-northeast-1.amazonaws.com/qustion-mark.jpeg" alt="アイコン" class="circle4">
@@ -193,24 +193,24 @@
                             
                         <ul class="list-unstyled px-3">
                             @if($recommended_user->age)
-                            <li class="mb-0">{!! nl2br(e($recommended_user->age)) !!}代</li>
+                            <li class="user-item mb-0">{!! nl2br(e($recommended_user->age)) !!}代</li>
                             @endif
                             
-                            @if($recommended_user->gender == 1)
-                            <li class="mb-0">男性 </li>
-                            @elseif($recommended_user->gender == 2)
-                            <li class="mb-0">女性 </li>
+                            @if($recommended_user->gender === "1")
+                            <li class="user-item mb-0">男性 </li>
+                            @elseif($recommended_user->gender === "2")
+                            <li class="user-item mb-0">女性 </li>
                             @endif
                             
                             @if($recommended_user->favorite_artist)
-                            <li class="mb-1" style="word-wrap: break-word;">
+                            <li class="user-item mb-1">
                                 <i class="fas fa-guitar mr-1"></i>
                                 好きなミュージシャン：{!! nl2br(e($recommended_user->favorite_artist)) !!}
                             </li>
                             @endif
                             
                             @if($recommended_user->favorite_music_age)
-                            <li class="mb-1" style="word-wrap: break-word;">
+                            <li class="user-item mb-1">
                                 <i class="fas fa-history mr-1"></i>
                                 好きな年代：{!! nl2br(e($recommended_user->favorite_music_age)) !!}年代
                             </li>
