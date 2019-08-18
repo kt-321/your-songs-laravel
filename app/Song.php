@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Song extends Model
-{
+{   
+    use SoftDeletes;
+    
     protected $fillable = ["user_id", "title", "artist_name",  "music_age", "description", "image_url", "video_url",];
     
     public function user()
