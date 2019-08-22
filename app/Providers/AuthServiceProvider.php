@@ -25,7 +25,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        // 開発者のみ許可
+        // 開発者のみ許可。使用予定はなく、アプリ完成後削除する予定。
         Gate::define("system-only", function($user){
             return($user->role === 1);
         });
