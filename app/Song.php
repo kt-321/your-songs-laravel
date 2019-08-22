@@ -9,7 +9,7 @@ class Song extends Model
 {   
     use SoftDeletes;
     
-    protected $fillable = ["user_id", "title", "artist_name",  "music_age", "description", "image_url", "video_url",];
+    protected $fillable = ["user_id", "title", "artist_name", "music_age", "description", "image_url", "video_url", "deleted_at"];
     
     public function user()
     {
