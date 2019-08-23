@@ -206,4 +206,37 @@ class SongsController extends Controller
         
         return view("songs.search", $data);
     }
+    
+    public function indexForAdmin()
+    {   
+        // 管理者権限を持ったユーザーが、投稿されている曲および削除済みの曲の一覧を見ることが出来る
+        $songs = Song::all(); 
+        $deleted = Song::onlyTrashed()->get(); 
+    
+        return view("songs.index_for_admin", [
+            "songs" => $songs,
+            "deleted" => $deleted,
+        ]);
+    }
+    
+    public function delete($id)
+    {
+        // 管理者権限を持ったユーザーが、投稿されている曲を削除できる
+        Song::find($id)->delete();
+        return redirect()->route("songs.indexForAdmin");
+    }
+    
+    public function restore($id)
+    {   
+        // 管理者権限を持ったユーザーが、削除済みの曲を復活させることが出来る
+        Song::onlyTrashed()->find($id)->restore();
+        return redirect()->route("songs.indexForAdmin");
+    }
+    
+    public function forceDelete($id)
+    {   
+        // 管理者権限を持ったユーザーが、削除済みの曲を完全に削除することが出来る
+        Song::onlyTrashed()->find($id)->forceDelete();
+        return redirect()->route("songs.indexForAdmin");
+    }
 }
