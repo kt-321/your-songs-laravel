@@ -143,6 +143,13 @@
                     {!! Form::close() !!}
                 @endif
             </div>
+            
+            <!--管理者としてログインしている場合に限り曲を削除できる-->
+            @if(Auth::user()->role === 5 && Auth::id() !== $song->user->id)
+            <div class="delete-song-button mb-3 text-center">
+                <a class="btn btn-danger" href="/delete/{{ $song->id }}">管理者権限でこの曲を削除</a>
+            </div>
+            @endif
         </li>
     @endforeach
 </ul>
