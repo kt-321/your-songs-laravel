@@ -15,6 +15,12 @@
             <ul class="navbar-nav">
                 <!--ログイン中のナビゲーションバー-->
                 @if (Auth::check())
+                    @if(Auth::user()->role === 5)
+                    <li class="nav-item">
+                        <a href="{{ url("/index-for-admin") }}" class="nav-link"><i class="fas fa-trash-alt mr-1"></i>曲の管理画面</a>
+                    </li>
+                    @endif
+                    
                     <li class="nav-item"><a href="{{ url("songs") }}" class="nav-link"><i class="far fa-clock mr-1"></i>タイムライン</a></li>
                     <li class="nav-item"><a href="{{ url("search/songs") }}" class="nav-link"><i class="fas fa-music mr-1"></i>曲を検索</a></li>
                     <li class="nav-item"><a href="{{ url("search/users") }}" class="nav-link"><i class="fas fa-user mr-1"></i>ユーザーを検索</a></li>
