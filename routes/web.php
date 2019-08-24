@@ -26,8 +26,8 @@ Route::group(["middleware" => "guest"], function(){
    
 });
 
-// ログイン時
-Route::group(["middleware" => "auth"], function(){
+// ログインしている全ユーザー
+Route::group(["middleware" => ["auth", "can:user-higher"]], function(){
     // ログイン時のトップページ
     Route::get("/home", "SongsController@index")->name("home");
     
@@ -66,4 +66,12 @@ Route::group(["middleware" => "auth"], function(){
         // 曲の検索機能
         Route::get("songs", "SongsController@search")->name("songs.search");
     });
+});
+
+// 管理者権限機能
+Route::group(["middleware" => ["auth", "can:admin-higher"]], function(){
+        Route::get("index-for-admin", "SongsController@indexForAdmin")->name("songs.indexForAdmin");
+        Route::get("delete/{id}", "SongsController@delete")->name("songs.delete");
+        Route::get("restore/{id}", "SongsController@restore")->name("songs.restore");
+        Route::get("force-delete/{id}", "SongsController@forceDelete")->name("songs.forceDelete");
 });
