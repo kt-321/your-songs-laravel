@@ -127,4 +127,8 @@ class User extends Authenticatable
     {
         return $this->favorites()->where("song_id", $songId)->exists();
     }
+    
+    public function accounts(){
+        return $this->hasMany("App\LinkedSocialAccount");
+    }
 }
