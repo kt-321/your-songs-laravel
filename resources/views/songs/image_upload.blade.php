@@ -8,7 +8,7 @@
     @if($song->image_url)
         <img src="{{ $song->image_url }}" class="song-image img-thumbnail">
     @else
-        <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/song.jpeg" class="song-image img-thumbnail">
+        <img src="https://your-songs-laravel.s3-ap-northeast-1.amazonaws.com/song.jpeg" class="song-image img-thumbnail">
     @endif
     
     <figcaption>
