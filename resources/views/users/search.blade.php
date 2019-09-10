@@ -113,11 +113,11 @@
                     @if($user->image_url)
                         <img src="{{ $user->image_url }}" alt="アイコン" class="circle4 mx-auto"> 
                     @elseif($user->gender === "1")
-                        <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/man.jpeg" alt="アイコン" class="circle4 mx-auto">
+                        <img src="https://your-songs-laravel.s3-ap-northeast-1.amazonaws.com/man.jpeg" alt="アイコン" class="circle4 mx-auto">
                     @elseif($user->gender === "2")
-                        <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/woman.jpeg" alt="アイコン" class="circle4 mx-auto">
+                        <img src="https://your-songs-laravel.s3-ap-northeast-1.amazonaws.com/woman.jpeg" alt="アイコン" class="circle4 mx-auto">
                     @else    
-                        <img src="https://original-yoursongs.s3-ap-northeast-1.amazonaws.com/qustion-mark.jpeg" alt="アイコン" class="circle4 mx-auto">
+                        <img src="https://your-songs-laravel.s3-ap-northeast-1.amazonaws.com/user-icon.png" alt="アイコン" class="circle4 mx-auto">
                     @endif
                     <a href="{{ route("users.show", ["id" => $user->id]) }}">{{ $user->name }}</a>
                 <div class="card-body px-2 py-1">
@@ -180,11 +180,11 @@
                             @if($recommended_user->image_url)
                                 <img src="{{ $recommended_user->image_url }}" alt="アイコン" class="circle4"> 
                             @elseif($recommended_user->gender === "1")
-                                <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/man.jpeg" alt="アイコン" class="circle4">
+                                <img src="https://your-songs-laravel.s3-ap-northeast-1.amazonaws.com/man.jpeg" alt="アイコン" class="circle4">
                             @elseif($recommended_user->gender === "2")
-                                <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/woman.jpeg" alt="アイコン" class="circle4">
+                                <img src="https://your-songs-laravel.s3-ap-northeast-1.amazonaws.com/woman.jpeg" alt="アイコン" class="circle4">
                             @else    
-                                <img src="https://original-yoursongs.s3-ap-northeast-1.amazonaws.com/qustion-mark.jpeg" alt="アイコン" class="circle4">
+                                <img src="https://your-songs-laravel.s3-ap-northeast-1.amazonaws.com/user-icon.png" alt="アイコン" class="circle4">
                             @endif
                             <figcaption class="text-center text-primary m-0">
                                 {{ $recommended_user->name }}

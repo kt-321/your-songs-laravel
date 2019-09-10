@@ -11,7 +11,7 @@
                         @if($song->image_url)
                             <img src="{{ $song->image_url }}" class="song-image img-thumbnail">
                         @else
-                            <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/song.jpeg" class="song-image img-thumbnail">
+                            <img src="https://your-songs-laravel.s3-ap-northeast-1.amazonaws.com/song.jpeg" class="song-image img-thumbnail">
                         @endif
                     
                     <figcaption>
@@ -66,11 +66,11 @@
                                     @if($song->user->image_url)
                                         <img src="{{ $song->user->image_url }}" alt="アイコン" class="circle2"> 
                                     @elseif($song->user->gender == 1)
-                                        <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/man.jpeg" alt="アイコン" class="circle2">
+                                        <img src="https://your-songs-laravel.s3-ap-northeast-1.amazonaws.com/man.jpeg" alt="アイコン" class="circle2">
                                     @elseif($song->user->gender == 2)
-                                        <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/woman.jpeg" alt="アイコン" class="circle2">
+                                        <img src="https://your-songs-laravel.s3-ap-northeast-1.amazonaws.com/woman.jpeg" alt="アイコン" class="circle2">
                                     @else
-                                        <img src="https://original-yoursongs.s3-ap-northeast-1.amazonaws.com/qustion-mark.jpeg" alt="アイコン" class="circle2">
+                                        <img src="https://your-songs-laravel.s3-ap-northeast-1.amazonaws.com/user-icon.png" alt="アイコン" class="circle2">
                                     @endif
                                     <figcaption class="text-center m-0">
                                         <a href="{{ route("users.show", ["id" => $song->user->id]) }}">{{ $song->user->name }}</a>
@@ -168,11 +168,11 @@
                                     @if($comment->user->image_url)
                                     <img src="{{ $comment->user->image_url }}" alt="画像" class="circle2"> 
                                     @elseif($comment->user->gender == 1)
-                                    <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/man.jpeg" alt="画像" class="circle2">
+                                    <img src="https://your-songs-laravel.s3-ap-northeast-1.amazonaws.com/man.jpeg" alt="画像" class="circle2">
                                     @elseif($comment->user->gender == 2)
-                                    <img src="https://s3-ap-northeast-1.amazonaws.com/original-yoursongs/woman.jpeg" alt="画像" class="circle2">
+                                    <img src="https://your-songs-laravel.s3-ap-northeast-1.amazonaws.com/woman.jpeg" alt="画像" class="circle2">
                                     @else
-                                    <img src="https://original-yoursongs.s3-ap-northeast-1.amazonaws.com/qustion-mark.jpeg" alt="画像" class="circle2">
+                                    <img src="https://your-songs-laravel.s3-ap-northeast-1.amazonaws.com/user-icon.png" alt="画像" class="circle2">
                                     @endif 
                                     <figcaption class="text-center m-0">
                                         <a class="comment-user-name" href="{{ route("users.show", ["id" => $comment->user->id]) }}">{{ $comment->user->name }}</a>
