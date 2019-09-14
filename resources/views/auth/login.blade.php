@@ -22,6 +22,8 @@
                 {!! Form::submit("ログイン", ["class" => "btn btn-primary btn-block"]) !!}
             {!! Form::close() !!}
             
+            <a href="/login/github" class="btn-github btn btn-default btn-block mt-4"><i class="fab fa-github mr-1"></i>Githubアカウントでログイン</a>
+            
             <p class="mt-2">未登録の方は <a href="{{ route("signup.get") }}">こちら</a>から新規登録できます。</p>
         </div>
     </div>

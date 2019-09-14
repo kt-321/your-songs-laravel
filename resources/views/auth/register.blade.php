@@ -13,6 +13,8 @@
                 
                {!! Form::submit("上記の内容で登録", ["class" => "btn btn-primary btn-block"]) !!}
             {!! Form::close() !!}
+            
+            <a href="/login/github" class="btn-github btn btn-default btn-block mt-4"><i class="fab fa-github mr-1"></i>Githubアカウントで登録</a>
         </div>
     </div>
 @endsection

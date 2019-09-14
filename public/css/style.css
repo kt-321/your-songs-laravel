@@ -255,6 +255,16 @@ h4.contributor-introduction-label{
   font-size: 15px;
 }
 
+.btn-github{
+  background-color: #555555;
+  color : white;
+}
+
+.btn-github:hover{
+  background-color: #999999;
+  color : white;
+}
+
  /*　画面サイズが480pxから768pxのとき　*/
 @media screen and (min-width:480px) { 
 .song-video{
