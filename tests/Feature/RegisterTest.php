@@ -33,8 +33,10 @@ class RegisterTest extends TestCase
     
     public function test_request_should_pass_when_data_is_provided()
     {   
+        $this->withoutExceptionHandling();
+        
         // ユーザー登録
-        $response = $this->post(route("signup.post"),[
+        $response = $this->from(route("welcome"))->post(route("signup.post"),[
             "name" => "aaa",
             "email" => "bbb@gmail.com",
             "password" => "cccccc",

@@ -30,6 +30,8 @@ class LoginTest extends TestCase
     
     public function test_valid_user_can_login()
     {   
+        $this->withoutExceptionHandling();
+        
         // ユーザーを１つ作成
         $user = factory(User::class)->create([
             "password" => bcrypt("test1111")
@@ -38,8 +40,10 @@ class LoginTest extends TestCase
         // まだ認証されていない
         $this->assertFalse(Auth::check());
         
+        // dd($user->password);
+        
         // ログイン実行
-        $response = $this->post(route("login.post"), [
+        $response = $this->from(route("login"))->post(route("login.post"), [
             "email" => $user->email,
             "password" => "test1111"
         ]);
