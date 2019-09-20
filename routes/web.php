@@ -12,7 +12,7 @@
 */
 
 // 未ログイン時
-Route::group(["middleware" => "guest"], function(){
+Route::group(["middleware" => ["guest"]], function(){
     // 未ログイン時のトップページ
     Route::get("/", "WelcomeController@welcome")->name("welcome");
     
