@@ -1,8 +1,64 @@
+.title-welcome-page{
+    position: relative;
+    height: 50vh;
+    background: url("https://your-songs-laravel.s3-ap-northeast-1.amazonaws.com/music_life.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+}
+
+.app-title{
+    position: absolute;
+    color: #fff;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 300px;
+    height: 100px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: black 1px 1px 0px, 
+                 black -1px 1px 0px, 
+                 black 1px -1px 0px, 
+                 black -1px -1px 0px
+}
+
+.navbar{
+  background: #003366;
+}
+
+body{
+    background-color: #eeeeee;    
+}
+
+.container{
+    margin-top: 20px;
+    background-color: #ffffff;
+}
+
 footer {
     background-color: #000080;
     text-align: center;
     color: #fff;
     height: 3vh;
+}
+
+.about-test-login{
+    text-decoration: underline;
+    color: red;
+}
+
+.how-to-test-login{
+    background-color: #FFFF99;
+}
+
+.dropdown-menu{
+  background: #003366;
+  border: thin solid rgba(0,153,255,.8);
 }
 
 /*ページネーション*/

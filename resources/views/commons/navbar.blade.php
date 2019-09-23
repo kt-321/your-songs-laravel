@@ -1,12 +1,12 @@
-<header class="mb-4">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<header>
+    <nav class="navbar navbar-expand-sm navbar-dark">
         @if (Auth::check())
-        <a class="navbar-brand" href="/home">YourSongs</a>
+        <a class="navbar-brand" href="/home"><i class="fas fa-headphones-alt mr-1"></i>YourSongs</a>
         @else
-        <a class="navbar-brand" href="/">YourSongs</a>
+        <a class="navbar-brand" href="/"><i class="fas fa-headphones-alt mr-1"></i>YourSongs</a>
         @endif
         
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav_bar">
             <span class="navbar-toggler-icon"></span>
         </button>
         
@@ -32,10 +32,10 @@
                             @endif
                             {{ Auth::user()->name }}
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-right bg-dark border-white">
-                            <li class="dropdown-item"><a href="{{ route("users.show", ["id" => Auth::id()]) }}" class="text-white"><i class="fas fa-user-circle mr-1" style="color: white;"></i>マイページ</a></li>
+                        <ul class="dropdown-menu dropdown-menu-right border-white">
+                            <li class="dropdown-item"><a href="{{ route("users.show", ["id" => Auth::id()]) }}" class="text-white"><i class="fas fa-user-circle mr-1"></i>マイページ</a></li>
                             <li class="dropdown-divider"></li>
-                            <li class="dropdown-item"><a href="{{ route("logout.get") }}" class="text-white"><i class="fas fa-sign-out-alt mr-1" style="color: white;"></i>ログアウト</a></li>
+                            <li class="dropdown-item"><a href="{{ route("logout.get") }}" class="text-white"><i class="fas fa-sign-out-alt mr-1"></i>ログアウト</a></li>
                         </ul>
                     </li>
                     
@@ -43,7 +43,6 @@
                 @else
                     <li class="nav-item"><a href="{{ route("login") }}" class="nav-link"><i class="fas fa-sign-in-alt mr-1"></i>ログイン</a></li>
                     <li class="nav-item"><a href="{{ route("signup.get") }}" class="nav-link"><i class="fas fa-user-plus mr-1"></i>新規登録</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
                 @endif
             </ul>
         </div>
