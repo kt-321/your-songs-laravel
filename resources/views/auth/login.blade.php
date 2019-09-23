@@ -7,6 +7,14 @@
    
     <div class="row"> 
         <div class="col-sm-6 offset-sm-3">
+            <div class="how-to-test-login border text-center p-2 mb-3">
+                <p>テストユーザーとしてログインする場合</p>
+                <ul class="list-unstyled m-0">
+                    <li>メールアドレス：test@example.com</li>
+                    <li>パスワード：testtest</li>
+                </ul>
+            </div>
+            
             {!! Form::open(["route" => "login.post"]) !!}
                 <div class="form-group">
                     <i class="far fa-envelope mr-1"></i>
