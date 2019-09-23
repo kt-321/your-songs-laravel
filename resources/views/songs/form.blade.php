@@ -16,13 +16,13 @@
     <i class="fas fa-history mr-1"></i>
     {!! Form::label("music_age", "年代") !!}
     <span class="badge badge-pill badge-danger">必須</span>
-       {{ Form::select("music_age", [1970 => "1970年代", 1980 => "1980年代", 1990 => "1990年代", 2000 => "2000年代", 2010 => "2010年代"],old("music_age"), ["class" => "form-control", "placeholder" => "－"]) }}
+    {{ Form::select("music_age", [1970 => "1970年代", 1980 => "1980年代", 1990 => "1990年代", 2000 => "2000年代", 2010 => "2010年代"],old("music_age"), ["class" => "form-control", "placeholder" => "－"]) }}
 </div>     
 
 <div class="form-group">
     <i class="far fa-comments mr-1"></i>
     {!! Form::label("description", "曲の説明") !!}
-        {!! Form::textarea("description", old("description"), ["class" => "form-control", "rows" => "4"]) !!}
+    {!! Form::textarea("description", old("description"), ["class" => "form-control", "rows" => "4"]) !!}
 </div>
 
 <div class="form-group">   

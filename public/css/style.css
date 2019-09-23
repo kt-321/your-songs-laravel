@@ -82,8 +82,8 @@ h4.contributor-introduction-label{
 }
 
 .song-video{
-    width: 220px; 
-    height: 150px;
+    width: 180px; 
+    height: 120px;
 }
 
 .song-title{
@@ -142,24 +142,29 @@ h4.contributor-introduction-label{
 }
 
 .self-introduction{
-    min-width: 150px;
-    max-width: 300px;
-}
-
-.self-introduction2{
     position:relative;
-    /*width:500px;*/
-    /*min-width: 30px;*/
-    /*max-width: 500px;*/
-    /*height:80px;*/
     background:#FFFFFF;
     padding:10px;
     margin:3px;
     text-align:center;
     border:1px solid #4ACAFF;
     color:#000000;
-    /*font-size:30px;*/
-    /*font-weight:bold;*/
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    word-wrap: break-word;
+    min-width: 150px;
+    max-width: 300px;
+}
+
+.self-introduction2{
+    position:relative;
+    background:#FFFFFF;
+    padding:10px;
+    margin:3px;
+    text-align:center;
+    border:1px solid #4ACAFF;
+    color:#000000;
     border-radius:10px;
     -webkit-border-radius:10px;
     -moz-border-radius:10px;
@@ -324,8 +329,8 @@ h4.contributor-introduction-label{
  /*　画面サイズが480pxから768pxのとき　*/
 @media screen and (min-width:480px) { 
 .song-video{
-    width: 400px; 
-    height: 250px;
+    width: 200px; 
+    height: 150px;
 }
 
 .self-introduction{
@@ -384,10 +389,10 @@ h4.contributor-introduction-label{
 }
     
 /*　画面サイズが768pxから1024pxのとき　*/
-@media screen and (min-width:768px) and ( max-width:1024px) {
+@media screen and (min-width:768px) and (max-width:1024px) {
 .song-video{
-    width: 450px; 
-    height: 300px;
+    width: 330px; 
+    height: 200px;
 }
 
 .self-introduction{
@@ -449,8 +454,8 @@ h4.contributor-introduction-label{
 /*　画面サイズが1024px以上のとき　*/
 @media screen and (min-width:1024px) {
 .song-video{
-    width: 550px; 
-    height: 350px;
+    width: 400px; 
+    height: 300px;
 }
 
 .self-introduction{
