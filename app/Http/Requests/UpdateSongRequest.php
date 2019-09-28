@@ -25,10 +25,10 @@ class UpdateSongRequest extends FormRequest
     public function rules()
     {
         return [
-            "title" => "required|max:15",
-            "artist_name" => "required|max:15",
+            "title" => "required|max:30",
+            "artist_name" => "required|max:30",
             "music_age" => "required|integer",
-            "description" => "nullable|max:200",
+            "description" => "nullable|max:300",
             "video_url" => "nullable|string|max:200",
         ];
     }
