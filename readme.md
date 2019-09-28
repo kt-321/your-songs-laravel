@@ -1,58 +1,60 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+## Your Songs
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+自分のおすすめの曲を紹介できるサービスです。<br>
+url: http://your-songs-laravel.site/
 
-## About Laravel
+<a href="http://your-songs-laravel.site/"><img src="https://i.gyazo.com/5054aaad1afba85e1a2b3ad3830cc268.png" alt="Image from Gyazo" width="1440"/></a>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## 使用技術
+* PHP
+* Laravel
+* MySQL
+* SCSS
+* Bootstrap
+* Vue.js
+* Docker
+* docker-compose
+* AWS
+    * VPC
+    * EC2
+    * Route53
+    * RDS for MySQL
+    * S3
+* CircleCI
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 本番環境
+<a href="https://gyazo.com/098e65868cc893bcb97802d1091f4670"><img src="https://i.gyazo.com/098e65868cc893bcb97802d1091f4670.png" alt="Image from Gyazo" width="723"/></a>
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+データベースにはRDS for MySQLを用いています。
+画像は全てS3に保存しています。
 
-## Learning Laravel
+## 開発環境
+Docker環境での開発になります。
+また、開発時にはdocker-composeを使用しています。
+開発環境では作業ごとにブランチを切って行っています。
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+## 機能一覧
+* 曲機能(songモデル)
+* 曲機能全般
+* ユーザ機能(userモデル)
+* ユーザ登録・ログイン機能全般
+* Githubでのログイン機能
+* 曲検索機能（新着順・お気に入り数順・コメント数順で並び替え可）
+* 曲のレコメンド機能（vue-carousel）
+* ユーザー検索機能
+* ユーザーのレコメンド機能（vue-carousel）
+* タイムライン（フォローしているユーザーの投稿した曲一覧を表示）
+* プロフィール画像の保存機能（S3）
+* コメント機能(commentモデル)
+* 投稿、削除、表示
+* フォロー機能
+* フォロー、アンフォロー機能
+* フォロー中のユーザー&フォロワーの表示
+* お気に入り機能
+* お気に入りした曲の表示
+* 管理者権限機能（曲の削除、完全削除、回復）
+* ページネーション機能
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## テスト
+単体テスト(PHPUnit)
+（記述を作成・修正中です。）
