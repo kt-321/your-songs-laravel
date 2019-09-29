@@ -23,7 +23,7 @@ url: http://your-songs-laravel.site/
 * CircleCI
 
 ## 本番環境
-<a href="https://gyazo.com/098e65868cc893bcb97802d1091f4670"><img src="https://i.gyazo.com/098e65868cc893bcb97802d1091f4670.png" alt="Image from Gyazo" width="723"/></a>
+<a href="https://gyazo.com/0dbe34d3312e2140ef8ffe47b9940896"><img src="https://i.gyazo.com/0dbe34d3312e2140ef8ffe47b9940896.png" alt="Image from Gyazo" width="718"/></a>
 
 データベースにはRDS for MySQLを用いています。
 画像は全てS3に保存しています。
@@ -58,3 +58,10 @@ Docker環境での開発になります。
 ## テスト
 単体テスト(PHPUnit)
 （記述を作成・修正中です。）
+
+## 改善中・実装中の箇所
+* ECS,ECRを設定してCI/CDパイプライン実装
+* ALBを設定し常時SSL化の実現
+* S3からCloudFrontでCDN配信
+＊ SPAの実装
+* テストコードの完成 
