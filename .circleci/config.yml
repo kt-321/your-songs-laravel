@@ -28,6 +28,8 @@ jobs:
       - checkout
     # Install PHP Extension
       - run: sudo docker-php-ext-install pdo_mysql
+    # Install PHP GD
+      - run: sudo docker-php-ext-install gd
       # Download and cache dependencies
       - restore_cache:
           keys:
