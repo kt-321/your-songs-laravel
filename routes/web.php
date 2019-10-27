@@ -70,6 +70,9 @@ Route::group(["middleware" => ["auth", "can:user-higher"]], function(){
         // 曲の検索機能
         Route::get("songs", "SongsController@search")->name("songs.search");
     });
+    
+    // YouTubeのキーワード検索機能
+    Route::get("youtube", "YouTubeController@index")->name("youtube.index");
 });
 
 // 管理者権限機能
