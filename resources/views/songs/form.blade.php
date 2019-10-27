@@ -31,5 +31,8 @@
     <div>https://www.youtube.com/watch?v=
         {!! Form::text("video_url", old("video_url"), ["class" => "form-control"]) !!}
         <p>アップしたいYouTube動画のURLのうち「v=」以降の文字列を打ち込んでください。</p>
+    	
+	<i class="fa fa-search"></i>️
+        <a href="{{ route("youtube.index") }}" target="_brank">キーワードでYouTube動画を検索する</a>
     </div>
 </div>

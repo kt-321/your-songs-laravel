@@ -28,7 +28,7 @@
 }
 
 .navbar{
-  background: #003366;
+    background: #003366;
 }
 
 body{
@@ -79,6 +79,11 @@ h4.contributor-introduction-label{
     color: #494949;/*文字色*/
     background: transparent;/*背景透明に*/
     border-left: solid 5px #7db4e6;/*左線*/
+}
+
+.youtube-video{
+    width: 180px;
+    height: 120px;
 }
 
 .song-video{
@@ -328,6 +333,11 @@ h4.contributor-introduction-label{
 
  /*　画面サイズが480pxから768pxのとき　*/
 @media screen and (min-width:480px) { 
+.youtube-video{
+    width: 200px;
+    height: 150px;
+}
+
 .song-video{
     width: 200px; 
     height: 150px;
@@ -390,6 +400,11 @@ h4.contributor-introduction-label{
     
 /*　画面サイズが768pxから1024pxのとき　*/
 @media screen and (min-width:768px) and (max-width:1024px) {
+.youtube-video{
+    width: 200px;
+    height: 150px;
+}
+
 .song-video{
     width: 330px; 
     height: 200px;
@@ -453,6 +468,11 @@ h4.contributor-introduction-label{
     
 /*　画面サイズが1024px以上のとき　*/
 @media screen and (min-width:1024px) {
+.youtube-video{
+    width: 250px;
+    height: 200px;
+}
+
 .song-video{
     width: 400px; 
     height: 300px;
