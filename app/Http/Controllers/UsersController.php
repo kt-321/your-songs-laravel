@@ -163,4 +163,10 @@ class UsersController extends Controller
         
         return view("users.favorites", $data);
     }
+
+    public function user($id)
+    {
+        $user = User::find($id);
+        return response()->json(['user' => $user]);
+    }
 }

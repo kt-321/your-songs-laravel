@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Laravel\Passport\Passport;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Http\Request;
 |
 */
 
+// ログインしているユーザーの情報を返す
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
