@@ -18,5 +18,10 @@ use Laravel\Passport\Passport;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+// ユーザー登録
 Route::post('signup', 'Api\UsersController@create');
+
+Route::group(['middleware' => ['auth:api']], function () {
+    // ユーザー一覧取得
+    Route::get('users', 'Api\UsersController@index');
+});
