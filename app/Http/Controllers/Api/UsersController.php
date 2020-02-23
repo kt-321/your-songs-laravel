@@ -14,7 +14,8 @@ use App\Http\Controllers\Controller;
 
 
 class UsersController extends Controller
-{
+{   
+    // ユーザー登録
     public function create(Request $request)
     {
         $valid = validator($request->only('email', 'name', 'password', 'password_confirmation'), [
@@ -59,5 +60,10 @@ class UsersController extends Controller
             'POST'
         );
         return \Route::dispatch($token);
+    }
+    // ユーザー一覧取得
+    public function index(Request $request) {
+        $users = User::all();
+        return $users->toJson();
     }
 }
