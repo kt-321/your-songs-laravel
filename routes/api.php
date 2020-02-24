@@ -24,4 +24,6 @@ Route::post('signup', 'Api\UsersController@create');
 Route::group(['middleware' => ['auth:api']], function () {
     // ユーザー一覧取得
     Route::get('users', 'Api\UsersController@index');
+    // ユーザー情報更新
+    Route::put('user/update/{id}', 'Api\UsersController@update');
 });
