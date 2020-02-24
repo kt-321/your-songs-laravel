@@ -28,4 +28,6 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('/user/{id}', 'Api\UsersController@show');
     // ユーザー情報更新
     Route::put('user/update/{id}', 'Api\UsersController@update');
+    // 曲一覧取得
+    Route::get('songs', 'Api\SongsController@index');
 });
