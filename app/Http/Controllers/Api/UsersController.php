@@ -67,6 +67,13 @@ class UsersController extends Controller
         return $users->toJson();
     }
 
+    // ユーザー情報取得
+    public function show($id)
+    {
+        $user = User::find($id);
+        return $user->toJson();
+    }
+
     // ユーザー情報更新
     public function update(UpdateUserRequest $request, $id)
     {   
