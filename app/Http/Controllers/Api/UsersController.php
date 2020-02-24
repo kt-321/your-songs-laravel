@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-
 use Illuminate\Http\Request;
-
+use App\Http\Requests\UpdateUserRequest;
 
 use App\User;
 use App\Song;
@@ -61,9 +60,17 @@ class UsersController extends Controller
         );
         return \Route::dispatch($token);
     }
+
     // ユーザー一覧取得
     public function index(Request $request) {
         $users = User::all();
         return $users->toJson();
+    }
+
+    // ユーザー情報更新
+    public function update(UpdateUserRequest $request, $id)
+    {   
+        $user = User::find($id);
+        $user->update($request->all());
     }
 }
