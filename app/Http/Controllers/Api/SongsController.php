@@ -22,7 +22,7 @@ class SongsController extends Controller
     public function store(CreateSongRequest $request)
     {   
         $user = \Auth::user();
-        $request->user()->songs()->create([$request->all]);
+        $user->songs()->create($request->all());
     }
 
     // 曲の更新
