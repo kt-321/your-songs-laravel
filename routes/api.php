@@ -34,4 +34,6 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::post('song', 'Api\SongsController@store');
     // 曲の更新
     Route::put('song/{id}', 'Api\SongsController@update');
+    // 曲の削除
+    Route::delete('song/{id}', 'Api\SongsController@destroy');
 });

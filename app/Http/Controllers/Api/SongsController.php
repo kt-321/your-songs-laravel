@@ -31,4 +31,15 @@ class SongsController extends Controller
         $song = Song::find($id);
         $song->update($request->all());
     }
+
+    // 曲の削除
+    public function destroy($id)
+    {  
+        $user = \Auth::user();
+        $song = Song::find($id);
+        
+        if($user->id === $song->user_id){
+            $song->delete();
+        }
+    }
 }
