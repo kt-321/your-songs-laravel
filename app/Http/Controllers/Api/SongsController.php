@@ -10,23 +10,12 @@ use App\Song;
 
 use App\Http\Controllers\Controller;
 
-use Log;
-
 class SongsController extends Controller
 {      
     // 曲情報取得
     public function show($id) {
         $user = \Auth::user();
         $song = Song::find($id);
-        Log::debug('song="'.$song.'"');
-        // $exist = $this->is_favoriting($id);
-        // if ($exist){
-        //     'favoriting' = true;
-        // } else {
-        //     'favoriting' = false;
-        // }
-        // $song -> attach('favoriting');
-        // return $song->append('is_bookmarked')->toJson();
         return $song->toJson();
     }
 
