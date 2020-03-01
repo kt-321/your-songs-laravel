@@ -28,6 +28,8 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('/user/{id}', 'Api\UsersController@show');
     // ユーザー情報更新
     Route::put('user/update/{id}', 'Api\UsersController@update');
+    // 曲の情報を取得
+    Route::get('song/{id}', 'Api\SongsController@show');
     // 曲一覧取得
     Route::get('songs', 'Api\SongsController@index');
     // 曲の追加
@@ -36,4 +38,8 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::put('song/{id}', 'Api\SongsController@update');
     // 曲の削除
     Route::delete('song/{id}', 'Api\SongsController@destroy');
+    // 曲のお気に入り登録
+    Route::post('song/{id}/bookmark', 'Api\FavoritesController@bookmark');
+    // 曲のお気に入りから外す
+    Route::post('song/{id}/removeBookmark', 'Api\FavoritesController@removeBookmark');
 });
