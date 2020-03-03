@@ -64,20 +64,23 @@ class UsersController extends Controller
     // ユーザー一覧取得
     public function index(Request $request) {
         $users = User::all();
-        return $users->toJson();
+        return $users->transform(function($users) {
+            return $users->append('is_followed');
+        })
+        ->toJson();
     }
 
     // ユーザー情報取得
     public function show($id)
     {
         $user = User::find($id);
-        return $user->toJson();
+        return $user->append('is_followed')->toJson();
     }
 
     // ユーザー情報更新
     public function update(UpdateUserRequest $request, $id)
     {   
         $user = User::find($id);
-        $user->update($request->all());
+        $user->update($request->validated());
     }
 }

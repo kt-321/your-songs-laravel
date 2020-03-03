@@ -28,6 +28,10 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('/user/{id}', 'Api\UsersController@show');
     // ユーザー情報更新
     Route::put('user/update/{id}', 'Api\UsersController@update');
+    // ユーザーをフォローする
+    Route::post('user/{id}/follow', 'Api\UserFollowController@store');
+    // ユーザーのフォローを外す
+    Route::post('user/{id}/unfollow', 'Api\UserFollowController@destroy');
     // 曲の情報を取得
     Route::get('song/{id}', 'Api\SongsController@show');
     // 曲一覧取得

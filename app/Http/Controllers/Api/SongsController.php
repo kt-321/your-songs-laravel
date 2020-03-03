@@ -12,13 +12,6 @@ use App\Http\Controllers\Controller;
 
 class SongsController extends Controller
 {      
-    // 曲情報取得
-    public function show($id) {
-        $user = \Auth::user();
-        $song = Song::find($id);
-        return $song->append('is_bookmarked')->toJson();
-    }
-
     // 曲一覧取得
     public function index(Request $request) {
         $songs = Song::all();
@@ -26,6 +19,13 @@ class SongsController extends Controller
             return $songs->append('is_bookmarked');
         })
         ->toJson();
+    }
+    
+    // 曲情報取得
+    public function show($id) {
+        $user = \Auth::user();
+        $song = Song::find($id);
+        return $song->append('is_bookmarked')->toJson();
     }
 
     // 曲の追加
