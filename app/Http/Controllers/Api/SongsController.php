@@ -16,27 +16,30 @@ class SongsController extends Controller
     public function show($id) {
         $user = \Auth::user();
         $song = Song::find($id);
-        return $song->toJson();
+        return $song->append('is_bookmarked')->toJson();
     }
 
     // 曲一覧取得
     public function index(Request $request) {
         $songs = Song::all();
-        return $songs->toJson();
+        return $songs->transform(function($songs) {
+            return $songs->append('is_bookmarked');
+        })
+        ->toJson();
     }
 
     // 曲の追加
     public function store(CreateSongRequest $request)
     {   
         $user = \Auth::user();
-        $user->songs()->create($request->all());
+        $user->songs()->create($request->validated());
     }
 
     // 曲の更新
     public function update(UpdateSongRequest $request, $id)
     {
         $song = Song::find($id);
-        $song->update($request->all());
+        $song->update($request->validated());
     }
 
     // 曲の削除
