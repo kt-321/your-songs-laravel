@@ -17,9 +17,6 @@ class Song extends Model
         "deleted_at"
     ];
 
-    // ログインユーザーによりお気に入り登録されているか否かという真偽値をJSONに追加
-    protected $appends = ['is_bookmarked'];
-
     public function user()
     {
         return $this->belongsTo(User::class);
