@@ -16,7 +16,7 @@ class SongsController extends Controller
     public function index(Request $request) {
         $songs = Song::all();
         return $songs->transform(function($songs) {
-            return $songs->append('is_bookmarked');
+            return $songs->append(['is_bookmarked', 'bookmarking_users']);
         })
         ->toJson();
     }
@@ -25,7 +25,7 @@ class SongsController extends Controller
     public function show($id) {
         $user = \Auth::user();
         $song = Song::find($id);
-        return $song->append('is_bookmarked')->toJson();
+        return $song->append(['is_bookmarked', 'bookmarking_users'])->toJson();
     }
 
     // 曲の追加

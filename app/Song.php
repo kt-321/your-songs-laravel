@@ -48,4 +48,10 @@ class Song extends Model
             return false;
         }
     }
+
+    // 曲をお気に入りに入れているユーザーリストを返すためのアクセサ
+    public function getBookmarkingUsersAttribute()
+    {
+        return $this->bookmarking_users()->get();
+    }
 }
