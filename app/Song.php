@@ -54,4 +54,10 @@ class Song extends Model
     {
         return $this->bookmarking_users()->get();
     }
+
+    // 曲へのコメント一覧を返すためのアクセサ
+    public function getCommentsAttribute()
+    {
+        return $this->comments()->get();
+    }
 }
