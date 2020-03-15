@@ -2,20 +2,24 @@
 
 namespace App;
 
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        "name", "email", "password", "age", "gender", "image_url", "favorite_music_age", "favorite_artist", "comment",
+    protected $guarded = [
+        'id',
+        'role',
+        'created_at',
+        'updated_at'
     ];
 
     /**
@@ -84,6 +88,24 @@ class User extends Authenticatable
     public function is_following($userId)
     {
         return $this->followings()->where("follow_id", $userId)->exists();
+    }
+
+    // ログイン中ユーザーがフォローしている
+    public function is_followed()
+    {   
+        $user = \Auth::user();
+        $userId = $user->id;
+        return $this->followers()->where("user_id", $userId)->exists();
+    }
+    // ログイン中ユーザーがフォローしているか否かを返すためのアクセサ
+    public function getIsFollowedAttribute()
+    {
+        $exist = $this->is_followed();
+        if ($exist){
+            return true;
+        } else {
+            return false;
+        }
     }
     
     public function feed_songs()
