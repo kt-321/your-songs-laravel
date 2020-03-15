@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateSongRequest;
 use App\Http\Requests\UpdateSongRequest;
+use App\Http\Requests\CreateCommentRequest;
 
 use App\Song;
 
@@ -16,7 +17,7 @@ class SongsController extends Controller
     public function index(Request $request) {
         $songs = Song::all();
         return $songs->transform(function($songs) {
-            return $songs->append(['is_bookmarked', 'bookmarking_users']);
+            return $songs->append(['is_bookmarked', 'bookmarking_users', 'comments']);
         })
         ->toJson();
     }
@@ -25,7 +26,7 @@ class SongsController extends Controller
     public function show($id) {
         $user = \Auth::user();
         $song = Song::find($id);
-        return $song->append(['is_bookmarked', 'bookmarking_users'])->toJson();
+        return $song->append(['is_bookmarked', 'bookmarking_users', 'comments'])->toJson();
     }
 
     // 曲の追加
