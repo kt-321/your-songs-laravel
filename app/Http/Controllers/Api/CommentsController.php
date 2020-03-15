@@ -10,8 +10,6 @@ use App\Song;
 
 use App\Http\Controllers\Controller;
 
-use Log;
-
 class CommentsController extends Controller
 {
     public function store(Request $request, $sid)
@@ -26,9 +24,7 @@ class CommentsController extends Controller
         $user = \Auth::user();
         $song = Song::find($sid);
         $comment = Comment::find($cid);
-        Log::debug($comment);
         $request->merge(['user_id' => $user->id, 'song_id' => $song->id]);
-        Log::debug($request);
         $comment->update($request->all());
     }
  
