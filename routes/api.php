@@ -46,4 +46,10 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::post('song/{id}/bookmark', 'Api\FavoritesController@bookmark');
     // 曲のお気に入りから外す
     Route::post('song/{id}/removeBookmark', 'Api\FavoritesController@removeBookmark');
+    // 曲へのコメントの投稿
+    Route::post('song/{sid}/comment', 'Api\CommentsController@store');
+    // 曲へのコメントの削除
+    Route::delete('comment/{cid}', 'Api\CommentsController@destroy');
+    // 曲へのコメントの更新
+    Route::put('song/{sid}/comment/{cid}', 'Api\CommentsController@update');
 });

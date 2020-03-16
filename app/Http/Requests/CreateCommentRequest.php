@@ -24,8 +24,6 @@ class CreateCommentRequest extends FormRequest
     public function rules()
     {
         return [
-            "user_id" => "required",
-            "song_id" => "required",
             "body" => "required|max:400",
         ];
     }
