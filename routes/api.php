@@ -32,6 +32,8 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::post('user/{id}/follow', 'Api\UserFollowController@store');
     // ユーザーのフォローを外す
     Route::post('user/{id}/unfollow', 'Api\UserFollowController@destroy');
+    // ユーザーの画像のアップロード
+    Route::post('user/image', 'Api\UserImagesController@upload');
     // 曲の情報を取得
     Route::get('song/{id}', 'Api\SongsController@show');
     // 曲一覧取得
@@ -52,4 +54,6 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::delete('comment/{cid}', 'Api\CommentsController@destroy');
     // 曲へのコメントの更新
     Route::put('song/{sid}/comment/{cid}', 'Api\CommentsController@update');
+    // 曲の画像のアップロード
+    Route::post('song/{sid}/image', 'Api\SongImagesController@upload');
 });
