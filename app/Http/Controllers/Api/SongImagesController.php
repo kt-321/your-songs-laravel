@@ -13,7 +13,7 @@ use App\Http\Controllers\Controller;
 
 class SongImagesController extends Controller
 {      
-    // 曲への画像のアップロード
+    // 曲の画像のアップロード
     public function upload(UploadSongImageRequest $request)
     {
         $file = $request->file("file");
