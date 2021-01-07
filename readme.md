@@ -1,3 +1,5 @@
+！　アプリケーション「Your Songs」がPHP/Laravel+Nuxt.jsの構成であったときのPHP/Laravelソースコード 
+
 ## Your Songs
 
 自分のおすすめの曲を紹介できるサービスです。<br>
